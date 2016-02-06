@@ -1,1 +1,10 @@
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    {{#each model as |sodaBrand|}}
+      {{#paper-button}}
+        <span>{{sodaBrand.name}}</span>
+      {{/paper-button}}
+    {{/each}}
+  </div>
+{{/paper-toolbar}}
 {{outlet}}
