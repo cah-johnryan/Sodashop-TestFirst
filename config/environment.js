@@ -4,6 +4,11 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sodashop-test-first',
     environment: environment,
+    contentSecurityPolicy: {
+      'img-src': "'self' data:",
+      'font-src': "'self' https://fonts.gstatic.com",
+      'style-src': "'self' 'unsafe-inline'"
+    },
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -25,6 +30,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'test') {
@@ -37,10 +45,15 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   if (environment === 'production') {
-
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
   }
 
   return ENV;
