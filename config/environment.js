@@ -6,8 +6,8 @@ module.exports = function(environment) {
     environment: environment,
     contentSecurityPolicy: {
       'img-src': "'self' data:",
-      'font-src': "'self' https://fonts.gstatic.com",
-      'style-src': "'self' 'unsafe-inline'"
+      'style-src': "'self' 'unsafe-inline'",
+      'font-src': "'self' https://fonts.gstatic.com"
     },
     baseURL: '/',
     locationType: 'auto',
@@ -46,7 +46,7 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV['ember-cli-mirage'] = {
-      enabled: false
+      enabled: true
     };
   }
 
