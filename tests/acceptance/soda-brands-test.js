@@ -13,7 +13,7 @@ moduleForAcceptance('Acceptance | soda brands', {
   afterEach: function() {}
 });
 
-test('when creating a soda brand it should then be visible in the toolbar',
+test('when creating a soda brand',
   function(assert) {
     assert.expect(1);
 
