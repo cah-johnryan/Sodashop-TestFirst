@@ -8,6 +8,8 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('sodaBrands', {
     path: '/'
+  }, function() {
+    this.route('create');
   });
 });
 

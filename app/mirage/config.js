@@ -8,4 +8,10 @@ export default function() {
       sodaBrands: db.sodaBrands
     };
   });
+
+  this.post('/sodaBrands', function(db, request) {
+  var attrs = JSON.parse(request.requestBody).sodaBrand;
+  var sodaBrand = db.sodaBrands.insert(attrs);
+  return sodaBrand;
+});
 }

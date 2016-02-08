@@ -8,6 +8,7 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | title');
 
 test('the title should state "Sodashop"', function(assert) {
+  assert.expect(1);
   server.loadFixtures();
   visit('/');
 
