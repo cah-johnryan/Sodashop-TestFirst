@@ -9,6 +9,7 @@ let mockSodaBrandObject;
 let mockStore = {
   createRecord: function(objectName, settings) {
     mockSodaBrandObject.name = settings.name;
+    mockSodaBrandObject.image = settings.image;
     return mockSodaBrandObject;
   }
 };
@@ -19,9 +20,11 @@ moduleFor('controller:soda-brands/create',
       controller = this.subject();
       mockSodaBrandObject = {
         name: undefined,
+        image: undefined,
         save: sinon.spy()
       };
       controller.store = mockStore;
+      controller.transitionToRoute = sinon.spy();
     },
     afterEach: function() {}
   });
@@ -33,9 +36,16 @@ test('it exists', function(assert) {
 });
 
 test('it saves a soda brand with the proper information', function(assert) {
-  assert.expect(2);
-  controller.set('brandName','foo');
+  assert.expect(3);
+  controller.set('brandName', 'foo');
+  controller.set('currentFileData', 'mockBase64DataForImage');
   controller.send('createSodaBrand');
-  assert.equal(mockSodaBrandObject.name, 'foo', '"name" was set');
-  assert.ok(mockSodaBrandObject.save.called, 'the soda brand was saved to the store');
+
+  assert.equal(mockSodaBrandObject.name, 'foo', 'the "name" field was set');
+
+  assert.equal(mockSodaBrandObject.image, 'mockBase64DataForImage',
+    'the "image" field was set');
+
+  assert.ok(mockSodaBrandObject.save.called,
+    'the soda brand was saved to the store');
 });
