@@ -8,7 +8,7 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | soda brands', {
   beforeEach: function() {
     server.loadFixtures();
-    visit('/create');
+    visit('/');
   },
   afterEach: function() {}
 });
@@ -17,6 +17,7 @@ test('when creating a soda brand',
   function(assert) {
     assert.expect(1);
 
+    click('#createSodaBrandLink');
     fillIn('#brandNameInput input', 'My new soda brand');
     click('#createSodaBrand');
 

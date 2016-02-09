@@ -61,3 +61,12 @@ test('it saves a soda brand with the proper information', function(assert) {
     'transitions back to the root of the application once the save completes'
   );
 });
+
+test('cancelling the creation of a soda brand', function(assert) {
+  assert.expect(1);
+  controller.send('cancelCreateSodaBrand');
+
+  assert.ok(controller.transitionToRoute.calledWith('/'),
+    'transitions back to the root of the application once the save completes'
+  );
+});
