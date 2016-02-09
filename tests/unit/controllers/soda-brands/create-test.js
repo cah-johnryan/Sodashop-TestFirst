@@ -5,23 +5,32 @@ from 'ember-qunit';
 import sinon from 'sinon';
 
 let controller;
-let mockSodaBrandObject;
-let mockStore = {
-  createRecord: function(objectName, settings) {
-    mockSodaBrandObject.name = settings.name;
-    mockSodaBrandObject.image = settings.image;
-    return mockSodaBrandObject;
-  }
-};
+let mockSodaBrandObject, mockSodaBrandObjectSaveCalled;
+let mockStore;
 
 moduleFor('controller:soda-brands/create',
   'Unit | Controller | soda brands/create', {
     beforeEach: function() {
       controller = this.subject();
+      mockSodaBrandObjectSaveCalled = false;
       mockSodaBrandObject = {
         name: undefined,
         image: undefined,
-        save: sinon.spy()
+        save: function() {
+          mockSodaBrandObjectSaveCalled = true;
+          return {
+            then: function(callback) {
+              if (callback) callback();
+            }
+          };
+        }
+      };
+      mockStore = {
+        createRecord: function(objectName, settings) {
+          mockSodaBrandObject.name = settings.name;
+          mockSodaBrandObject.image = settings.image;
+          return mockSodaBrandObject;
+        }
       };
       controller.store = mockStore;
       controller.transitionToRoute = sinon.spy();
@@ -36,7 +45,7 @@ test('it exists', function(assert) {
 });
 
 test('it saves a soda brand with the proper information', function(assert) {
-  assert.expect(3);
+  assert.expect(4);
   controller.set('brandName', 'foo');
   controller.set('currentFileData', 'mockBase64DataForImage');
   controller.send('createSodaBrand');
@@ -46,6 +55,10 @@ test('it saves a soda brand with the proper information', function(assert) {
   assert.equal(mockSodaBrandObject.image, 'mockBase64DataForImage',
     'the "image" field was set');
 
-  assert.ok(mockSodaBrandObject.save.called,
+  assert.ok(mockSodaBrandObjectSaveCalled,
     'the soda brand was saved to the store');
+
+  assert.ok(controller.transitionToRoute.calledWith('/'),
+    'transitions back to the root of the application once the save completes'
+  )
 });

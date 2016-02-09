@@ -5,13 +5,15 @@ export default Ember.Controller.extend({
   actions: {
     createSodaBrand: function() {
       console.log("createSodaBrand");
-      var sodaBrand = this.store.createRecord('soda-brand', {
+      let sodaBrand = this.store.createRecord('soda-brand', {
         name: this.get('brandName'),
         image: this.get('currentFileData')
       });
 
       let that = this;
-      sodaBrand.save();
+      sodaBrand.save().then(function() {
+        that.transitionToRoute('/');
+      });
     },
     fileLoaded: function(file) {
       this.set('currentFileData', file.data);
