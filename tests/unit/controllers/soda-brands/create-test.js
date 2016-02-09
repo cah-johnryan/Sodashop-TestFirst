@@ -5,16 +5,14 @@ from 'ember-qunit';
 import sinon from 'sinon';
 
 let controller;
-let mockSodaBrandObject, mockSodaBrandObjectSaveCalled;
+let mockSodaBrandObject, mockSodaBrandObjectSaved;
 let mockStore;
 
 function setupMockSodaBrandObject() {
-  mockSodaBrandObjectSaveCalled = false;
+  mockSodaBrandObjectSaved = null;
   return {
-    name: undefined,
-    image: undefined,
     save: function() {
-      mockSodaBrandObjectSaveCalled = true;
+      mockSodaBrandObjectSaved = this;
       return {
         then: function(callback) {
           if (callback) {
@@ -56,12 +54,13 @@ test('it saves a soda brand with the proper information', function(assert) {
   controller.set('currentFileData', 'mockBase64DataForImage');
   controller.send('createSodaBrand');
 
-  assert.equal(mockSodaBrandObject.name, 'foo', 'the "name" field was set');
+  assert.equal(mockSodaBrandObjectSaved.name, 'foo',
+    'the "name" field was set');
 
-  assert.equal(mockSodaBrandObject.image, 'mockBase64DataForImage',
+  assert.equal(mockSodaBrandObjectSaved.image, 'mockBase64DataForImage',
     'the "image" field was set');
 
-  assert.ok(mockSodaBrandObjectSaveCalled,
+  assert.ok(mockSodaBrandObjectSaved !== null,
     'the soda brand was saved to the store');
 
   assert.ok(controller.transitionToRoute.calledWith('/'),
