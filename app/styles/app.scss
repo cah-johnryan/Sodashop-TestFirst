@@ -1,6 +1,9 @@
 $primary: "blue";
 @import 'ember-paper';
 
+#title {
+  cursor:pointer;
+}
 .giveMeSpaceToBreathe {
   margin: .5em;
 }
