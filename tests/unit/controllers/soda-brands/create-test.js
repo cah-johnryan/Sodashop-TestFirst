@@ -8,23 +8,29 @@ let controller;
 let mockSodaBrandObject, mockSodaBrandObjectSaveCalled;
 let mockStore;
 
+function setupMockSodaBrandObject() {
+  mockSodaBrandObjectSaveCalled = false;
+  return {
+    name: undefined,
+    image: undefined,
+    save: function() {
+      mockSodaBrandObjectSaveCalled = true;
+      return {
+        then: function(callback) {
+          if (callback) {
+            callback();
+          }
+        }
+      };
+    }
+  };
+}
+
 moduleFor('controller:soda-brands/create',
   'Unit | Controller | soda brands/create', {
     beforeEach: function() {
       controller = this.subject();
-      mockSodaBrandObjectSaveCalled = false;
-      mockSodaBrandObject = {
-        name: undefined,
-        image: undefined,
-        save: function() {
-          mockSodaBrandObjectSaveCalled = true;
-          return {
-            then: function(callback) {
-              if (callback) callback();
-            }
-          };
-        }
-      };
+      mockSodaBrandObject = setupMockSodaBrandObject();
       mockStore = {
         createRecord: function(objectName, settings) {
           mockSodaBrandObject.name = settings.name;
@@ -60,5 +66,5 @@ test('it saves a soda brand with the proper information', function(assert) {
 
   assert.ok(controller.transitionToRoute.calledWith('/'),
     'transitions back to the root of the application once the save completes'
-  )
+  );
 });
