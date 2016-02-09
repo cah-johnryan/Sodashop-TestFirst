@@ -42,12 +42,6 @@ moduleFor('controller:soda-brands/create',
     afterEach: function() {}
   });
 
-// Replace this with your real tests.
-test('it exists', function(assert) {
-  assert.expect(1);
-  assert.ok(controller);
-});
-
 test('it saves a soda brand with the proper information', function(assert) {
   assert.expect(4);
   controller.set('brandName', 'foo');
