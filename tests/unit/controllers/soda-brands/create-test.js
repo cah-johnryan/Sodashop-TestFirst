@@ -16,7 +16,12 @@ function setupMockSodaBrandObject() {
       return {
         then: function(callback) {
           if (callback) {
-            callback();
+            let result = {
+              get: function() {
+                return 4;
+              }
+            };
+            callback(result);
           }
         }
       };
@@ -57,7 +62,8 @@ test('it saves a soda brand with the proper information', function(assert) {
   assert.ok(mockSodaBrandObjectSaved !== null,
     'the soda brand was saved to the store');
 
-  assert.ok(controller.transitionToRoute.calledWith('/'),
+  assert.ok(controller.transitionToRoute.calledWith('sodaBrands.sodaBrand',
+      4),
     'transitions back to the root of the application once the save completes'
   );
 });

@@ -15,7 +15,7 @@ moduleForAcceptance('Acceptance | soda brands', {
 
 test('when creating a soda brand',
   function(assert) {
-    assert.expect(1);
+    assert.expect(2);
 
     click('#createSodaBrandLink');
     fillIn('#brandNameInput input', 'My new soda brand');
@@ -25,6 +25,8 @@ test('when creating a soda brand',
       let result = $('.md-toolbar-tools span').filter(function() {
         return $(this).text() === 'My new soda brand';
       });
-      assert.ok(result.length > 0, "the toolbar shows the new soda brand");
+      assert.ok(result.length > 0, 'the toolbar shows the new soda brand');
+      assert.ok($('.sodaBrandImage').length > 0,
+        'the image for the soda brand is shown');
     });
   });

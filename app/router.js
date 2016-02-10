@@ -9,8 +9,12 @@ Router.map(function() {
   this.route('sodaBrands', {
     path: '/'
   }, function() {
+    this.route('sodaBrand', {
+      path: '/:soda-brand_id'
+    });
     this.route('create');
   });
+
 });
 
 export default Router;
