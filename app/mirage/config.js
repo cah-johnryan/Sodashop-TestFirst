@@ -9,9 +9,18 @@ export default function() {
     };
   });
 
+  this.get('/sodaBrands/:id', function(db, request) {
+    let id = request.params.id;
+    return {
+      sodaBrands: db.sodaBrands.find(id)
+    };
+  });
+
   this.post('/sodaBrands', function(db, request) {
-  var attrs = JSON.parse(request.requestBody).sodaBrand;
-  var sodaBrand = db.sodaBrands.insert(attrs);
-  return sodaBrand;
-});
+    var attrs = JSON.parse(request.requestBody).sodaBrand;
+    var newSodaBrand = db.sodaBrands.insert(attrs);
+    return {
+      sodaBrand: newSodaBrand
+    };
+  });
 }
