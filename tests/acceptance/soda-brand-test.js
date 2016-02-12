@@ -5,7 +5,7 @@ from 'qunit';
 import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | soda brands', {
+moduleForAcceptance('Acceptance | soda brand', {
   beforeEach: function() {
     server.loadFixtures();
     visit('/');
