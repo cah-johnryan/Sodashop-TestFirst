@@ -30,3 +30,16 @@ test('when creating a soda brand',
         'the image for the soda brand is shown');
     });
   });
+
+test('when a soda brand is selected', function(assert) {
+  assert.expect(2);
+
+  click('md-toolbar a[href="/1"]');
+
+  andThen(function() {
+    assert.ok($('.sodaBrandImage').length > 0,
+      'the image for the soda brand is shown');
+    assert.equal($('#sodaBrandName').text(), "Lester's Fixins'",
+      'it displays the name of the soda.');
+  });
+});
