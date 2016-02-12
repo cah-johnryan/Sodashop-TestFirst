@@ -1,0 +1,16 @@
+{{#paper-content class="md-whiteframe-z1 list-demo"}}
+  {{#paper-list}}
+    {{#each model as |soda|}}
+      {{#paper-item class="md-3-line" param=soda action="goToSoda"}}
+        <img src={{soda.image}} alt=meh class="md-avatar">
+        <div class="md-list-item-text">
+          <h3>{{soda.name}}</h3>
+          <h4>{{soda.formattedPriceDollars}}</h4>
+          <p>
+            {{soda.description}}
+          </p>
+        </div>
+      {{/paper-item}}
+    {{/each}}
+  {{/paper-list}}
+{{/paper-content}}

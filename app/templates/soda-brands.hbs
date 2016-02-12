@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools">
     {{#each model as |sodaBrand|}}
       {{#paper-button}}
-        {{#link-to "sodaBrands.sodaBrand" sodaBrand.id}}
+        {{#link-to "sodaBrands.sodaBrand.sodas" sodaBrand.id}}
           <span>{{sodaBrand.name}}</span>
         {{/link-to}}
       {{/paper-button}}
