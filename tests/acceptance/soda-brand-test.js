@@ -29,7 +29,8 @@ test('when creating a soda brand',
       assert.ok($('.sodaBrandImage').length > 0,
         'the image for the soda brand is shown');
     });
-  });
+  }
+);
 
 test('when a soda brand is selected', function(assert) {
   assert.expect(2);

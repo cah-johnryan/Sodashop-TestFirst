@@ -1,0 +1,14 @@
+<div>
+  <h3>Enter the new Soda's information below: </h3>
+  <div>{{paper-input id="sodaNameInput" label="Soda Name" value=name}}</div>
+  <div>{{paper-input id="sodaCostInput" label="Cost" value=cost}}</div>
+  <div>{{paper-input id="sodaDescriptionInput" label="Description" value=description}}</div>
+  {{#paper-button raised=true}}
+    {{#file-picker fileLoaded="fileLoaded" readAs="readAsDataURL"}}
+      Drag here or click to upload a file
+    {{/file-picker}}
+  {{/paper-button}}
+  <br/>
+  {{#paper-button id="createSoda" raised=true primary=true action="createSoda"}}Create{{/paper-button}}
+  {{#paper-button raised=true warn=true action="cancelCreateSoda"}}Cancel{{/paper-button}}
+</div>

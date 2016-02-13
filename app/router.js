@@ -12,7 +12,9 @@ Router.map(function() {
     this.route('sodaBrand', {
       path: '/:soda-brand_id'
     }, function() {
-      this.route('sodas');
+      this.route('sodas', function() {
+        this.route('create');
+      });
     });
     this.route('create');
   });
