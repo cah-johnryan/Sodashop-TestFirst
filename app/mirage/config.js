@@ -38,4 +38,13 @@ export default function() {
       })
     };
   });
+
+  this.post('/sodas', function(db, request) {
+    var attrs = JSON.parse(request.requestBody).soda;
+    attrs.sodaBrand = Number(attrs.sodaBrand);
+    var newSoda = db.sodas.insert(attrs);
+    return {
+      soda: newSoda
+    };
+  });
 }
