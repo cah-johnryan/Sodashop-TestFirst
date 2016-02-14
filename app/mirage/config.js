@@ -33,7 +33,6 @@ export default function() {
     };
   });
 
-
   this.get('/sodas/:id', function(db, request) {
     let id = request.params.id;
     return {
@@ -47,6 +46,15 @@ export default function() {
     var newSoda = db.sodas.insert(attrs);
     return {
       soda: newSoda
+    };
+  });
+
+  this.put('/sodas/:id', function(db, request) {
+    var id = request.params.id;
+    var attrs = JSON.parse(request.requestBody).soda;
+    var record = db.sodas.update(id, attrs);
+    return {
+      soda: record
     };
   });
 }

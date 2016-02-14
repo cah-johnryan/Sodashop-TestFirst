@@ -54,18 +54,30 @@ test('when creating a soda',
   });
 
 test('when editing on a soda in the listing', function(assert) {
-  assert.expect(1);
+  assert.expect(3);
 
   click('md-list-item:nth-child(1) button');
   andThen(function() {
     click('button[action="beginEditSoda"]');
     andThen(function() {
-      fillIn('#sodaEditName', 'New edited soda name');
+      fillIn('#sodaEditName input', 'New edited soda name');
+      fillIn('#sodaEditCost input', '123.45');
+      fillIn('#sodaEditDescription input',
+        'New edited soda description');
       click('button[action="updateSoda"]');
       andThen(function() {
         assert.ok($('h3:contains("New edited soda name")').length >
           0,
-          'it displays "New edited soda name"');
+          'the name changes properly to "New edited soda name"'
+        );
+        assert.ok($('h4:contains("$123.45")').length >
+          0,
+          'the cost changes properly to "$123.45"');
+        assert.ok($('p:contains("New edited soda description")')
+          .length >
+          0,
+          'the description changes properly to "New edited soda description"'
+        );
       });
     });
   });
