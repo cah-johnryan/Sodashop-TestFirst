@@ -52,3 +52,21 @@ test('when creating a soda',
       });
     });
   });
+
+test('when editing on a soda in the listing', function(assert) {
+  assert.expect(1);
+
+  click('md-list-item:nth-child(1) button');
+  andThen(function() {
+    click('button[action="beginEditSoda"]');
+    andThen(function() {
+      fillIn('#sodaEditName', 'New edited soda name');
+      click('button[action="updateSoda"]');
+      andThen(function() {
+        assert.ok($('h3:contains("New edited soda name")').length >
+          0,
+          'it displays "New edited soda name"');
+      });
+    });
+  });
+});

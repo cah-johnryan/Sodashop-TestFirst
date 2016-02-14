@@ -15,6 +15,9 @@ Router.map(function() {
       this.route('sodas', function() {
         this.route('create');
       });
+      this.route('soda', {
+        path: '/:soda_id'
+      });
     });
     this.route('create');
   });

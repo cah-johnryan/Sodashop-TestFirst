@@ -24,18 +24,20 @@ export default function() {
     };
   });
 
-  this.get('/sodas', function(db) {
-    return {
-      sodaBrands: db.sodas
-    };
-  });
-
   this.get('/sodas', function(db, request) {
     let sodaBrand = request.queryParams.equalTo;
     return {
       sodas: db.sodas.where({
         'sodaBrand': sodaBrand
       })
+    };
+  });
+
+
+  this.get('/sodas/:id', function(db, request) {
+    let id = request.params.id;
+    return {
+      sodas: db.sodas.find(id)
     };
   });
 
