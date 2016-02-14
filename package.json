@@ -42,6 +42,7 @@
     "ember-export-application-global": "^1.0.4",
     "ember-paper": "0.2.11",
     "ember-sinon": "^0.3.0",
-    "emberfire": "1.6.4"
+    "emberfire": "1.6.4",
+    "firebase": "2.4.0"
   }
 }

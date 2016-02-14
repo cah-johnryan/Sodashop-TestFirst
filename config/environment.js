@@ -4,6 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sodashop-test-first',
     environment: environment,
+    firebase: 'https://sodashopjohnryan.firebaseio.com/',
     contentSecurityPolicy: {
       'img-src': "'self' data:",
       'style-src': "'self' 'unsafe-inline'",
