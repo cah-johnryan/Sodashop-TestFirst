@@ -29,7 +29,6 @@ skip('when creating a soda (mirage issue)',
           'it displays "My new soda"');
       });
     });
-
   });
 
 test('when creating a soda',
@@ -52,5 +51,4 @@ test('when creating a soda',
         });
       });
     });
-
   });
