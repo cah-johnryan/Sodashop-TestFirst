@@ -24,24 +24,24 @@ test('When there are no coins inserted',
 test('When a quarter is inserted', function(assert) {
   click('#quarter');
   andThen(function() {
-    assert.equal($('#vendingMachineDisplay').text(), '0.25',
-      'the machine displays "0.25"');
+    assert.equal($('#vendingMachineDisplay').text(), '$0.25 INSERTED',
+      'the machine displays "$0.25 INSERTED"');
   });
 });
 
 test('When a dime is inserted', function(assert) {
   click('#dime');
   andThen(function() {
-    assert.equal($('#vendingMachineDisplay').text(), '0.10',
-      'the machine displays "0.10"');
+    assert.equal($('#vendingMachineDisplay').text(), '$0.10 INSERTED',
+      'the machine displays "$0.10 INSERTED"');
   });
 });
 
 test('When a nickel is inserted', function(assert) {
   click('#nickel');
   andThen(function() {
-    assert.equal($('#vendingMachineDisplay').text(), '0.05',
-      'the machine displays "0.05"');
+    assert.equal($('#vendingMachineDisplay').text(), '$0.05 INSERTED',
+      'the machine displays "$0.05 INSERTED"');
   });
 });
 

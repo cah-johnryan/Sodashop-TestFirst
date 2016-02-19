@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
         that.transitionToRoute('sodaBrands.sodaBrand.sodas');
       });
     },
-    cancelCreateSodaBrand: function() {
+    cancelCreateSoda: function() {
       this.transitionToRoute('sodaBrands.sodaBrand.sodas');
     },
     fileLoaded: function(file) {

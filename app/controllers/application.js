@@ -9,20 +9,20 @@ export default Ember.Controller.extend({
     },
     insertPenny: function() {
       let notify = this.get('notify');
-      let message = notify.error(
+      notify.error(
         'This soda machine is not able to accept pennies', {
           closeAfter: null
         });
       this.set('displayMessage', 'INSERT COIN');
     },
     insertNickel: function() {
-      this.set('displayMessage', '0.05');
+      this.set('displayMessage', '$0.05 INSERTED');
     },
     insertDime: function() {
-      this.set('displayMessage', '0.10');
+      this.set('displayMessage', '$0.10 INSERTED');
     },
     insertQuarter: function() {
-      this.set('displayMessage', '0.25');
+      this.set('displayMessage', '$0.25 INSERTED');
     }
   }
 });
