@@ -5,6 +5,27 @@ $primary: "blue";
   cursor:pointer;
 }
 
+.vendingMachine {
+  div {
+    width: 50%;
+    float: left;
+    border-color: black;
+    border-top: .1em solid;
+    border-bottom: .1em solid;
+    h4 {
+      margin-top: .3em;
+      margin-bottom: .3em;
+      padding-left: .8em;
+    }
+  }
+  div:nth-child(1) {
+    background-color: black;
+    h4 {
+      color: white;
+    }
+  }
+}
+
 .sodaImage {
   width: 11em;
   height: 11em;
