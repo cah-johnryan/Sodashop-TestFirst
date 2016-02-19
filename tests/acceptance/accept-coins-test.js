@@ -1,4 +1,5 @@
 import {
+  skip,
   test
 }
 from 'qunit';
@@ -21,10 +22,10 @@ test('When there are no coins inserted',
     });
   });
 
-test('When a quarter is inserted', function(assert) {
+skip('When a quarter is inserted', function(assert) {
 
   andThen(function() {
     assert.equal($('#vendingMachineDisplay').text(), '0.25',
       'the machine displays "0.25"');
   });
-})
+});
