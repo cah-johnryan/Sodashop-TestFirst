@@ -55,3 +55,12 @@ test('When a penny is inserted', function(assert) {
       'the machine shows an error message');
   });
 });
+
+test('When a nickel and a dime is inserted', function(assert) {
+  click('#nickel');
+  click('#dime');
+  andThen(function() {
+    assert.equal($('#vendingMachineDisplay').text(), '$0.15 INSERTED',
+      'the machine displays "$0.15 INSERTED"');
+  });
+});

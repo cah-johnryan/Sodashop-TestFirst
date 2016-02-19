@@ -2,10 +2,21 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
-  displayMessage: 'INSERT COIN',
+  displayMessage: Ember.computed('amountInserted', function() {
+    let amountInserted = this.get('amountInserted');
+    return (!amountInserted || amountInserted === 0) ? 'INSERT COIN' :
+      '$' + amountInserted.toFixed(2) + ' INSERTED';
+  }),
+  amountInserted: 0,
+
   actions: {
     returnToHome: function() {
       this.transitionToRoute('/');
+    },
+    insertCoin: function(amount) {
+      let currentAmountInserted = this.get('amountInserted');
+      currentAmountInserted += amount;
+      this.set('amountInserted', currentAmountInserted);
     },
     insertPenny: function() {
       let notify = this.get('notify');
@@ -13,16 +24,15 @@ export default Ember.Controller.extend({
         'This soda machine is not able to accept pennies', {
           closeAfter: null
         });
-      this.set('displayMessage', 'INSERT COIN');
     },
     insertNickel: function() {
-      this.set('displayMessage', '$0.05 INSERTED');
+      this.send('insertCoin', 0.05);
     },
     insertDime: function() {
-      this.set('displayMessage', '$0.10 INSERTED');
+      this.send('insertCoin', 0.10);
     },
     insertQuarter: function() {
-      this.set('displayMessage', '$0.25 INSERTED');
+      this.send('insertCoin', 0.25);
     }
   }
 });
