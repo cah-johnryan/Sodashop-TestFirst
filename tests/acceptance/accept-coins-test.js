@@ -36,3 +36,19 @@ test('When a dime is inserted', function(assert) {
       'the machine displays "0.10"');
   });
 });
+
+test('When a nickel is inserted', function(assert) {
+  click('#nickel');
+  andThen(function() {
+    assert.equal($('#vendingMachineDisplay').text(), '0.05',
+      'the machine displays "0.05"');
+  });
+});
+
+test('When a penny is inserted', function(assert) {
+  click('#penny');
+  andThen(function() {
+    assert.equal($('#vendingMachineDisplay').text(), 'INSERT COIN',
+      'the machine displays "INSERT COIN"');
+  });
+});
