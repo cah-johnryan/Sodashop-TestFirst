@@ -6,24 +6,44 @@ $primary: "blue";
 }
 
 .vendingMachine {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   div {
-    width: 50%;
-    float: left;
     border-color: black;
-    border-top: .1em solid;
-    border-bottom: .1em solid;
+    border-style: solid;
+    border-top-width: .1em;
+    border-bottom-width: .1em;
+    border-left-width: 0em;
+    border-right-width: 0em;
     h4 {
-      margin-top: .3em;
-      margin-bottom: .3em;
       padding-left: .8em;
     }
   }
   div:nth-child(1) {
     background-color: black;
     h4 {
+      width: 15em;
       color: white;
     }
   }
+  div:nth-child(3) {
+    width: 100%;
+  }
+}
+
+.coinSlot {
+  margin-top: .3em;
+  margin-left: .3em;
+  margin-right: .3em;
+  width: 3.2em;
+  height: 3.2em;
+}
+.coinImage {
+  margin-top: .9em;
+  margin-left: .9em;
+  width: 2em;
+  height: 2em;
 }
 
 .sodaImage {
