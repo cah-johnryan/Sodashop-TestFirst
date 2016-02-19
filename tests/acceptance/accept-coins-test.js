@@ -28,3 +28,11 @@ test('When a quarter is inserted', function(assert) {
       'the machine displays "0.25"');
   });
 });
+
+test('When a dime is inserted', function(assert) {
+  click('#dime');
+  andThen(function() {
+    assert.equal($('#vendingMachineDisplay').text(), '0.10',
+      'the machine displays "0.10"');
+  });
+});
