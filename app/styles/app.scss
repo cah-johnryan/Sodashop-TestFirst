@@ -5,7 +5,7 @@ $primary: "blue";
   cursor:pointer;
 }
 
-.vendingMachine {
+.vendingMachinePanel {
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -20,7 +20,7 @@ $primary: "blue";
       padding-left: .8em;
     }
   }
-  div:nth-child(1) {
+  div:nth-child(1), div:nth-child(2) {
     background-color: black;
     h4 {
       width: 15em;
@@ -30,20 +30,19 @@ $primary: "blue";
   div:nth-child(3) {
     width: 100%;
   }
-}
-
-.coinSlot {
-  margin-top: .3em;
-  margin-left: .3em;
-  margin-right: .4em;
-  width: 3.2em;
-  height: 3.2em;
-}
-.coinImage {
-  margin-top: .9em;
-  margin-left: .9em;
-  width: 2em;
-  height: 2em;
+  .coinSlot {
+    margin-top: .3em;
+    margin-left: .3em;
+    margin-right: .4em;
+    width: 3.2em;
+    height: 3.2em;
+  }
+  .coinImage {
+    margin-top: .9em;
+    margin-left: .9em;
+    width: 2em;
+    height: 2em;
+  }
 }
 
 .sodaImage {
