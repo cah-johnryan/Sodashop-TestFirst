@@ -1,7 +1,33 @@
-# Sodashop-test-first
+# Sodashop-VendingMachine
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Vending Machine Kata
+====================
+
+In this exercise you will build the brains of a vending machine.  It will accept money, make change, maintain
+inventory, and dispense products.  All the things that you might expect a vending machine to accomplish.
+
+The point of this kata to to provide an larger than trivial exercise that can be used to practice TDD.  A significant
+portion of the effort will be in determining what tests should be written and, more importantly, written next.
+
+Features
+========
+
+Accept Coins
+------------
+
+_As a vendor_  
+_I want a vending machine that accepts coins_  
+_So that I can collect money from the customer_  
+
+The vending machine will accept valid coins (nickels, dimes, and quarters) and reject invalid ones (pennies).  When a
+valid coin is inserted the amount of the coin will be added to the current amount and the display will be updated.
+When there are no coins inserted, the machine displays INSERT COIN.  Rejected coins are placed in the coin return.
+
+NOTE: The temptation here will be to create Coin objects that know their value.  However, this is not how a real
+  vending machine works.  Instead, it identifies coins by their weight and size and then assigned a value to what
+  was inserted.  You will need to do something similar.  This can be simulated using strings, constants, enums,
+  symbols, or something of that nature.
+
 
 ## Prerequisites
 
@@ -50,4 +76,3 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
