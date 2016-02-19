@@ -3,11 +3,7 @@
   <div>
     <h4 id="vendingMachineDisplay">INSERT COIN</h4>
   </div>
-  <div>
-    <img src="/assets/coinSlot.png" alt=meh class="coinSlot">
-  </div>
-  <div>
-    <img src="/assets/quarter.png" alt=meh class="coinImage" draggable="true">
-  </div>
+    {{coin-slot action="processCoinInsert"}}
+    {{vending-machine-coin}}
 </div>
 {{outlet}}

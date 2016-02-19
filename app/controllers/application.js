@@ -4,6 +4,9 @@ export default Ember.Controller.extend({
   actions: {
     returnToHome: function() {
       this.transitionToRoute('/');
+    },
+    processCoinInsert: function(coinType) {
+      console.log('Coin inserted: ' + coinType);
     }
   }
 });
