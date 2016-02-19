@@ -1,9 +1,12 @@
 <h2 id="title" class="giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop</h2>
 <div class="vendingMachinePanel">
   <div>
-    <h4 id="vendingMachineDisplay">INSERT COIN</h4>
+    <h4 id="vendingMachineDisplay">{{displayMessage}}</h4>
   </div>
-    {{coin-slot action="processCoinInsert"}}
-    {{vending-machine-coin}}
+  <div>
+    {{#paper-button id="quarter" action="insertCoin"}}
+      <img src="/assets/quarter.png" alt=meh class="coinImage" />
+    {{/paper-button}}
+  </div>
 </div>
 {{outlet}}
