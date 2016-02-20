@@ -56,7 +56,7 @@ test('when creating a soda',
 test('when editing on a soda in the listing', function(assert) {
   assert.expect(3);
 
-  click('md-list-item:nth-child(1) button');
+  click('md-list-item:nth-child(1) a');
   andThen(function() {
     click('button[action="beginEditSoda"]');
     andThen(function() {

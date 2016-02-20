@@ -1,6 +1,7 @@
 $primary: "blue";
 @import 'ember-paper';
 
+$primary: #2196f3;
 $warn: #f44336;
 
 #title {
@@ -39,6 +40,10 @@ $warn: #f44336;
   }
 }
 
+.ember-notify.success {
+  background-color: $primary;
+  color: white;
+}
 .ember-notify.error {
   background-color: $warn;
   color: white;
