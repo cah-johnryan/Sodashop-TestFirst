@@ -1,6 +1,8 @@
 $primary: "blue";
 @import 'ember-paper';
 
+$warn: #f44336;
+
 #title {
   cursor:pointer;
 }
@@ -35,6 +37,11 @@ $primary: "blue";
     width: 2em;
     height: 2em;
   }
+}
+
+.ember-notify.error {
+  background-color: $warn;
+  color: white;
 }
 
 .sodaImage {
