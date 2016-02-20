@@ -23,10 +23,16 @@ The vending machine will accept valid coins (nickels, dimes, and quarters) and r
 valid coin is inserted the amount of the coin will be added to the current amount and the display will be updated.
 When there are no coins inserted, the machine displays INSERT COIN.  Rejected coins are placed in the coin return.
 
-NOTE: The temptation here will be to create Coin objects that know their value.  However, this is not how a real
-  vending machine works.  Instead, it identifies coins by their weight and size and then assigned a value to what
-  was inserted.  You will need to do something similar.  This can be simulated using strings, constants, enums,
-  symbols, or something of that nature.
+NOTE: The temptation here will be to create Coin objects that know their value.  However, this is not how a real vending machine works.  Instead, it identifies coins by their weight and size and then assigned a value to what was inserted.  You will need to do something similar.  This can be simulated using strings, constants, enums, symbols, or something of that nature.
+
+Select Product
+--------------
+
+_As a vendor_  
+_I want customers to select products_  
+_So that I can give them an incentive to put money in the machine_  
+
+There are three products: cola for $1.00, chips for $0.50, and candy for $0.65.  When the respective button is pressed and enough money has been inserted, the product is dispensed and the machine displays THANK YOU.  If the display is checked again, it will display INSERT COINS and the current amount will be set to $0.00.  If there is not enough money inserted then the machine displays PRICE and the price of the item and subsequent checks of the display will display either INSERT COINS or the current amount as appropriate.
 
 
 ## Prerequisites
