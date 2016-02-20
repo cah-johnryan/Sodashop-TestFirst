@@ -11,7 +11,6 @@ $warn: #f44336;
 .vendingMachinePanel {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   div {
     border-color: black;
     border-style: solid;
@@ -19,13 +18,11 @@ $warn: #f44336;
     border-bottom-width: .1em;
     border-left-width: 0em;
     border-right-width: 0em;
-    h4 {
-      padding-left: .8em;
-    }
   }
   div:nth-child(1) {
     background-color: black;
     h4 {
+      padding-left: .8em;
       width: 15em;
       color: white;
     }
