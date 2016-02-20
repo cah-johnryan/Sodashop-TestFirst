@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
       let notify = this.get('notify');
       notify.error(
         'This soda machine is not able to accept pennies', {
-          closeAfter: 5000
+          closeAfter: null
         });
     },
     insertNickel: function() {

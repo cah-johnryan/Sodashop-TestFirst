@@ -51,9 +51,9 @@ test('When a penny is inserted', function(assert) {
   andThen(function() {
     assert.equal($('#vendingMachineDisplay').text(), 'INSERT COIN',
       'the machine displays "INSERT COIN"');
-    // assert.equal($('.message').text(),
-    //   'This soda machine is not able to accept pennies',
-    //   'the machine shows an error message');
+    assert.equal($('.message').text(),
+      'This soda machine is not able to accept pennies',
+      'the machine shows an error message');
   });
 });
 

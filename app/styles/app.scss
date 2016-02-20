@@ -37,13 +37,15 @@ $warn: #f44336;
   }
 }
 
-.ember-notify.success {
-  background-color: $primary;
+.ember-notify {
+  border-radius: .4em;
   color: white;
 }
-.ember-notify.error {
+.ember-notify.success {
+  background-color: $primary;
+}
+.ember-notify.warning, .ember-notify.error {
   background-color: $warn;
-  color: white;
 }
 
 .sodaImage {
