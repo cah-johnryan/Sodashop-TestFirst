@@ -19,21 +19,31 @@ test('visiting the soda listing for "Lesters Fixins"', function(assert) {
   andThen(function() {
     assert.equal($('md-list-item').length, 8,
       "exactly eight items are displayed");
-    assert.ok($('h3:contains("Bacon Soda")').length > 0,
-      "it displays Bacon Soda");
-    assert.ok($('h3:contains("Coffee Soda")').length > 0,
-      "it displays Coffee Soda");
-    assert.ok($('h3:contains("Buffalo Wing Soda")').length > 0,
-      "it displays Buffalo Wing Soda");
-    assert.ok($('h3:contains("Bacon Soda with Chocolate")').length > 0,
+    assert.equal($('md-list-item:nth-child(1) h3').text(),
+      'Bacon Soda with Chocolate',
       "it displays Bacon Soda with Chocolate");
-    assert.ok($('h3:contains("Peanut Butter & Jelly Soda")').length > 0,
+    assert.equal($('md-list-item:nth-child(2) h3').text(),
+      'Buffalo Wing Soda',
+      "it displays Buffalo Wing Soda");
+    assert.equal($('md-list-item:nth-child(3) h3').text(),
+      'Coffee Soda',
+      "it displays Coffee Soda");
+    assert.equal($('md-list-item:nth-child(4) h3').text(),
+      'Peanut Butter & Jelly Soda',
       "it displays Peanut Butter & Jelly Soda");
-    assert.ok($('h3:contains("Sweet Corn Soda")').length > 0,
+    assert.equal($('md-list-item:nth-child(5) h3').text(),
+      'Sweet Corn Soda',
       "it displays Sweet Corn Soda");
-    assert.ok($('h3:contains("Ranch Dressing Soda")').length > 0,
+    assert.equal($('md-list-item:nth-child(6) h3').text(),
+      'Ranch Dressing Soda',
       "it displays Ranch Dressing Soda");
-    assert.ok($('h3:contains("Pumpkin Pie Soda")').length > 0,
+    assert.equal($('md-list-item:nth-child(7) h3').text(),
+      'Pumpkin Pie Soda',
       "it displays Pumpkin Pie Soda");
+    assert.equal($('md-list-item:nth-child(8) h3').text(), 'Bacon Soda',
+      "it displays Bacon Soda");
+
+
+
   });
 });
