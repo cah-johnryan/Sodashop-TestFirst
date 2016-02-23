@@ -60,3 +60,7 @@ $warn: #f44336;
 .sodaListingHeader {
   margin-bottom: 0em;
 }
+
+.soldOut {
+  color: $warn !important;
+}

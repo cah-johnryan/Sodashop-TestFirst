@@ -26,3 +26,30 @@ test('should belong to a soda-brand', function(assert) {
   assert.equal(relationship.kind, 'belongsTo',
     'kind of relationship is belongsTo');
 });
+
+test('When a soda has a quantity of 0', function(assert) {
+  const soda = this.subject({
+    id: 7,
+    cost: 0.50,
+    quantity: 0,
+    description: "Pumpkins suck!",
+    sodaBrand: 1,
+    name: "Buffalo Wing Soda"
+  });
+
+  assert.equal(soda.get('isSoldOut'), true, 'it is sold out');
+});
+
+
+test('When a soda has a quantity greater than 0', function(assert) {
+  const soda = this.subject({
+    id: 7,
+    cost: 0.50,
+    quantity: 1,
+    description: "Pumpkins suck!",
+    sodaBrand: 1,
+    name: "Buffalo Wing Soda"
+  });
+
+  assert.equal(soda.get('isSoldOut'), false, 'it is NOT sold out');
+});

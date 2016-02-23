@@ -11,5 +11,8 @@ export default DS.Model.extend({
     var price = this.get('cost'),
       formatted = parseFloat(price, 10).toFixed(2);
     return '$' + formatted;
-  }.property('cost')
+  }.property('cost'),
+  isSoldOut: Ember.computed('quantity', function() {
+    return this.get('quantity') > 0 ? false : true;
+  })
 });

@@ -24,47 +24,47 @@ test('visiting the soda listing for "Lesters Fixins"', function(assert) {
       'Bacon Soda with Chocolate',
       "it displays Bacon Soda with Chocolate");
     assert.equal($('md-list-item:nth-child(1) h4').text(),
-      'Price: $0.50, Quantity remaining: 2',
-      "it displays the right price and quantity for Bacon Soda with Chocolate"
+      '$0.50',
+      "it displays the right price for Bacon Soda with Chocolate"
     );
 
     assert.equal($('md-list-item:nth-child(2) h3').text(),
       'Buffalo Wing Soda',
       "it displays Buffalo Wing Soda");
     assert.equal($('md-list-item:nth-child(2) h4').text(),
-      'Price: $0.50, Quantity remaining: 3',
-      "it displays the right price and quantity for Buffalo Wing Soda"
+      '$0.50',
+      "it displays the right price for Buffalo Wing Soda"
     );
 
     assert.equal($('md-list-item:nth-child(3) h3').text(),
       'Coffee Soda',
       "it displays Coffee Soda");
     assert.equal($('md-list-item:nth-child(3) h4').text(),
-      'Price: $1.50, Quantity remaining: 4',
-      "it displays the right price and quantity for Coffee Soda"
+      '$1.50',
+      "it displays the right price for Coffee Soda"
     );
 
     assert.equal($('md-list-item:nth-child(4) h3').text(),
       'Peanut Butter & Jelly Soda',
       "it displays Peanut Butter & Jelly Soda");
     assert.equal($('md-list-item:nth-child(4) h4').text(),
-      'Price: $0.50, Quantity remaining: 5',
-      "it displays the right price and quantity for Peanut Butter & Jelly Soda"
+      '$0.50',
+      "it displays the right price for Peanut Butter & Jelly Soda"
     );
 
     assert.equal($('md-list-item:nth-child(5) h3').text(),
       'Sweet Corn Soda',
       "it displays Sweet Corn Soda");
     assert.equal($('md-list-item:nth-child(5) h4').text(),
-      'Price: $0.50, Quantity remaining: 2',
-      "it displays the right price and quantity for Sweet Corn Soda"
+      '$0.50',
+      "it displays the right price for Sweet Corn Soda"
     );
 
     assert.equal($('md-list-item:nth-child(6) h3').text(),
       'Ranch Dressing Soda',
       "it displays Ranch Dressing Soda");
     assert.equal($('md-list-item:nth-child(6) h4').text(),
-      'Price: $0.50, Quantity remaining: 3',
+      '$0.50',
       "it displays the right price and quantity for Ranch Dressing Soda"
     );
 
@@ -72,17 +72,15 @@ test('visiting the soda listing for "Lesters Fixins"', function(assert) {
       'Pumpkin Pie Soda',
       "it displays Pumpkin Pie Soda");
     assert.equal($('md-list-item:nth-child(7) h4').text(),
-      'Price: $0.50, Quantity remaining: 0',
-      "it displays the right price and quantity for Pumpkin Pie Soda"
+      'SOLD OUT',
+      "it displays the right price for Pumpkin Pie Soda"
     );
 
     assert.equal($('md-list-item:nth-child(8) h3').text(), 'Bacon Soda',
       "it displays Bacon Soda");
     assert.equal($('md-list-item:nth-child(8) h4').text(),
-      'Price: $0.50, Quantity remaining: 6',
-      "it displays the right price and quantity for Bacon Soda"
+      '$0.50',
+      "it displays the right price for Bacon Soda"
     );
-
-
   });
 });
