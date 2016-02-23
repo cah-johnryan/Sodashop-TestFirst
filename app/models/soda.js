@@ -4,6 +4,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   image: DS.attr(),
   cost: DS.attr(),
+  quantity: DS.attr(),
   description: DS.attr(),
   sodaBrand: DS.belongsTo('soda-brand'),
   formattedPriceDollars: function() {

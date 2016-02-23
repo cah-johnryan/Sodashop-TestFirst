@@ -8,7 +8,7 @@
         <img src={{soda.image}} alt=meh class="md-avatar" action="goToSoda">
         <div class="md-list-item-text">
           <h3>{{soda.name}}</h3>
-          <h4>{{soda.formattedPriceDollars}}</h4>
+          <h4>Price: {{soda.formattedPriceDollars}}, Quantity remaining: {{soda.quantity}}</h4>
           <p>
             {{soda.description}} {{#link-to "sodaBrands.sodaBrand.soda" soda.id}}More{{/link-to}}
           </p>
