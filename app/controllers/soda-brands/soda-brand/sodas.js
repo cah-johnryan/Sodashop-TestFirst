@@ -8,15 +8,35 @@ export default Ember.Controller.extend({
     purchaseSoda: function(soda) {
       let sodaBrandsController = this.get('sodaBrandsController');
       let amountInserted = sodaBrandsController.get('amountInserted');
-      let sodaCost = soda.get('cost');
       let notify = sodaBrandsController.get('notify');
-      if (sodaCost > amountInserted) {
+      let sodaCost = soda.get('cost');
+      let sodaQuantity = soda.get('quantity');
+      if (sodaQuantity > 0) {
+        if (sodaCost > amountInserted) {
+          notEnoughMoneyInserted();
+        } else {
+          dispenseSoda();
+        }
+      } else {
+        soldOut();
+      }
+
+      function soldOut() {
+        notify.error(
+          'This soda is sold out.  Please select another soda.', {
+            closeAfter: null
+          });
+      }
+
+      function notEnoughMoneyInserted() {
         notify.warning('Not enough money has been inserted.  ' +
           'The price for ' + soda.get('name') + ' is ' +
           soda.get('formattedPriceDollars') + '.', {
             closeAfter: null
           });
-      } else {
+      }
+
+      function dispenseSoda() {
         amountInserted -= sodaCost;
         sodaBrandsController.set('amountInserted', amountInserted);
         notify.success(

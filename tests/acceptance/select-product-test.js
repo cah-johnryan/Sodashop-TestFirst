@@ -64,3 +64,21 @@ test('When selecting "Sweet Corn Soda" when not enough money is inserted',
         'the machine displays "$0.25 INSERTED"');
     });
   });
+
+test('When selecting a soda that is sold out', function(assert) {
+  assert.expect(2);
+  click('#quarter');
+  visit('/1/sodas');
+  click('md-list-item:nth-child(7) button');
+
+  andThen(function() {
+    assert.equal($('.message').text(),
+      'This soda is sold out.  Please select another soda.',
+      'the machine displays a message stating that the soda is sold out.'
+    );
+    assert.equal($('#vendingMachineDisplay').text(), '$0.25 INSERTED',
+      'the machine displays "$0.25 INSERTED"');
+  });
+
+
+});
