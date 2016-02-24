@@ -79,6 +79,20 @@ test('When selecting a soda that is sold out', function(assert) {
     assert.equal($('#vendingMachineDisplay').text(), '$0.25 INSERTED',
       'the machine displays "$0.25 INSERTED"');
   });
+});
 
+test('When selecting the last soda', function(assert) {
+  click('#quarter');
+  click('#quarter');
+  visit('/2/sodas');
+  click('md-list-item:nth-child(1) button');
+
+  andThen(function() {
+    assert.equal($('.message').text(),
+      'Apple Pie Soda dispensed.  Thank you!',
+      'the machine dispenses the product');
+    assert.equal($('md-list-item:nth-child(1) h4').text(),
+      'SOLD OUT', 'the product now states that it is sold out');
+  });
 
 });

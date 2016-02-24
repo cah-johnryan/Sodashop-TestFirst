@@ -39,6 +39,8 @@ export default Ember.Controller.extend({
       function dispenseSoda() {
         amountInserted -= sodaCost;
         sodaBrandsController.set('amountInserted', amountInserted);
+        soda.set('quantity', --sodaQuantity);
+        soda.save();
         notify.success(
           soda.get('name') + ' dispensed.  Thank you!', {
             closeAfter: null
