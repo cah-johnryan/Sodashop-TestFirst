@@ -5,6 +5,7 @@
     {{#paper-card-content}}
       {{paper-input id="sodaEditName" label="Name" name=name value=model.soda.name}}
       {{paper-input id="sodaEditCost" label="Cost" name=cost value=model.soda.cost}}
+      {{paper-input id="sodaEditQuantity" label="Quantity" name=quantity value=model.soda.quantity}}
       {{paper-input id="sodaEditDescription" label="Description" name=description value=model.soda.description}}
     {{/paper-card-content}}
     <div class="md-actions" layout="row" layout-align="begin center">
@@ -17,10 +18,9 @@
     <img src="{{model.soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
     {{#paper-card-content}}
       <h2>{{model.soda.name}}</h2>
-      <div><span>Price: </span>{{model.soda.cost}}</div>
-      <p>
-        Description: {{model.soda.description}}
-      </p>
+      <div>Price: <span id="sodaCost">{{model.soda.cost}}</span></div>
+      <div>Quantity: <span id="sodaQuantity">{{model.soda.quantity}}</span></div>
+      <p>Description: {{model.soda.description}}</p>
     {{/paper-card-content}}
     <div class="md-actions" layout="row" layout-align="begin center">
       {{#paper-button raised=true action="beginEditSoda"}}Edit{{/paper-button}}

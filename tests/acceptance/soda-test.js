@@ -54,14 +54,28 @@ test('when creating a soda',
   });
 
 test('when editing on a soda in the listing', function(assert) {
-  assert.expect(3);
+  assert.expect(7);
 
   click('md-list-item:nth-child(1) a');
   andThen(function() {
     click('button[action="beginEditSoda"]');
+    assert.ok($('md-card h2').text(), 'Bacon Soda with Chocolate',
+      'the name is displayed'
+    );
+    assert.equal($('#sodaCost').text(), '0.5',
+      'the price is displayed'
+    );
+    assert.equal($('#sodaQuantity').text(), '2',
+      'the quantity is displayed'
+    );
+    assert.equal($('md-card p').text().trim(),
+      "Description: Taste's like bacon",
+      'the description is displayed'
+    );
     andThen(function() {
       fillIn('#sodaEditName input', 'New edited soda name');
       fillIn('#sodaEditCost input', '123.45');
+      fillIn('#sodaEditQuantity input', '0');
       fillIn('#sodaEditDescription input',
         'New edited soda description');
       click('button[action="updateSoda"]');
@@ -70,14 +84,15 @@ test('when editing on a soda in the listing', function(assert) {
           0,
           'the name changes properly to "New edited soda name"'
         );
-        assert.ok($('h4:contains("$123.45")').length >
-          0,
-          'the cost changes properly to "$123.45"');
+        assert.equal($('md-list-item:nth-child(1) h4').text(),
+          'SOLD OUT',
+          'the product now states that it is sold out');
         assert.ok($('p:contains("New edited soda description")')
           .length >
           0,
           'the description changes properly to "New edited soda description"'
         );
+
       });
     });
   });
