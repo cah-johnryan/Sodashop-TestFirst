@@ -2,11 +2,11 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.Model.extend({
-  name: DS.attr(),
-  image: DS.attr(),
-  cost: DS.attr(),
-  quantity: DS.attr(),
-  description: DS.attr(),
+  name: DS.attr('string'),
+  image: DS.attr('string'),
+  cost: DS.attr('number'),
+  quantity: DS.attr('number'),
+  description: DS.attr('string'),
   sodaBrand: DS.belongsTo('soda-brand'),
   formattedPriceDollars: function() {
     var price = this.get('cost'),

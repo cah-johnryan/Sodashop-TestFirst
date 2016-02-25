@@ -28,7 +28,7 @@ export default function() {
     let sodaBrand = request.queryParams.equalTo;
     return {
       sodas: db.sodas.where({
-        'sodaBrand': sodaBrand
+        sodaBrand: sodaBrand
       })
     };
   });
