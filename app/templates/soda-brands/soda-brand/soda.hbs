@@ -1,7 +1,7 @@
 <h3>Soda details:</h3>
-{{#if model.edit}}
-  {{#paper-card}}
-    <img src="{{model.soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
+{{#paper-card}}
+  <img src="{{model.soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
+  {{#if model.edit}}
     {{#paper-card-content}}
       {{paper-input id="sodaEditName" label="Name" name=name value=model.soda.name}}
       {{paper-input id="sodaEditCost" label="Cost" name=cost value=model.soda.cost}}
@@ -12,18 +12,15 @@
       {{#paper-button raised=true primary=true action="updateSoda" target=component}}Update{{/paper-button}}
       {{#paper-button raised=true warn=true action="cancelEditSoda"}}Cancel{{/paper-button}}
     </div>
-  {{/paper-card}}
-{{else}}
-  {{#paper-card}}
-    <img src="{{model.soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
+  {{else}}
     {{#paper-card-content}}
       <h2>{{model.soda.name}}</h2>
       <div>Price: <span id="sodaCost">{{model.soda.cost}}</span></div>
-      <div>Quantity: <span id="sodaQuantity">{{model.soda.quantity}}</span></div>
+      <div class="sodaQuantity">Quantity: <span id="sodaQuantity">{{model.soda.quantity}}</span></div>
       <p>Description: {{model.soda.description}}</p>
     {{/paper-card-content}}
     <div class="md-actions" layout="row" layout-align="begin center">
       {{#paper-button raised=true action="beginEditSoda"}}Edit{{/paper-button}}
     </div>
-  {{/paper-card}}
-{{/if}}
+  {{/if}}
+{{/paper-card}}
