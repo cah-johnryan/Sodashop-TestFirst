@@ -6,11 +6,11 @@ import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | accept coins', {
-  beforeEach: function() {
-    server.loadFixtures();
-    visit('/');
-  },
-  afterEach: function() {}
+  beforeEach() {
+      server.loadFixtures();
+      visit('/');
+    },
+    afterEach() {}
 });
 
 test('When there are no coins inserted',

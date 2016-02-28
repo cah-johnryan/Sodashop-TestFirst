@@ -7,11 +7,11 @@ import sinon from 'sinon';
 let controller;
 
 moduleFor('controller:application', 'Unit | Controller | application', {
-  beforeEach: function() {
-    controller = this.subject();
-    controller.transitionToRoute = sinon.spy();
-  },
-  afterEach: function() {}
+  beforeEach() {
+      controller = this.subject();
+      controller.transitionToRoute = sinon.spy();
+    },
+    afterEach() {}
 });
 
 test('trying to return home (to the root of the application)', function(assert) {

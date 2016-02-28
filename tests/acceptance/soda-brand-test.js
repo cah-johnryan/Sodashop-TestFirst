@@ -6,11 +6,11 @@ import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | soda brand', {
-  beforeEach: function() {
-    server.loadFixtures();
-    visit('/');
-  },
-  afterEach: function() {}
+  beforeEach() {
+      server.loadFixtures();
+      visit('/');
+    },
+    afterEach() {}
 });
 
 test('when creating a soda brand',

@@ -7,11 +7,11 @@ import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | soda', {
-  beforeEach: function() {
-    server.loadFixtures();
-    visit('/1/sodas');
-  },
-  afterEach: function() {}
+  beforeEach() {
+      server.loadFixtures();
+      visit('/1/sodas');
+    },
+    afterEach() {}
 });
 
 skip('when creating a soda (mirage issue)',

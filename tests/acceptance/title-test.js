@@ -6,11 +6,11 @@ import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | title', {
-  beforeEach: function() {
-    server.loadFixtures();
-    visit('/');
-  },
-  afterEach: function() {}
+  beforeEach() {
+      server.loadFixtures();
+      visit('/');
+    },
+    afterEach() {}
 });
 
 test('the title should state "Sodashop"', function(assert) {

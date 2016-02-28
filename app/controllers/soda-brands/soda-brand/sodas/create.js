@@ -5,27 +5,27 @@ export default Ember.Controller.extend({
   sodaBrandModel: Ember.computed.reads('sodaBrandController.model'),
   currentFileData: undefined,
   actions: {
-    createSoda: function() {
-      console.log("createSoda");
-      let soda = this.store.createRecord('soda', {
-        name: this.get('name'),
-        cost: this.get('cost'),
-        description: this.get('description'),
-        image: this.get('currentFileData')
-      });
+    createSoda() {
+        console.log("createSoda");
+        let soda = this.store.createRecord('soda', {
+          name: this.get('name'),
+          cost: this.get('cost'),
+          description: this.get('description'),
+          image: this.get('currentFileData')
+        });
 
-      let that = this;
-      let selectedSodaBrand = this.get('sodaBrandModel.sodaBrand');
-      soda.set('sodaBrand', selectedSodaBrand);
-      soda.save().then(function() {
-        that.transitionToRoute('sodaBrands.sodaBrand.sodas');
-      });
-    },
-    cancelCreateSoda: function() {
-      this.transitionToRoute('sodaBrands.sodaBrand.sodas');
-    },
-    fileLoaded: function(file) {
-      this.set('currentFileData', file.data);
-    }
+        let that = this;
+        let selectedSodaBrand = this.get('sodaBrandModel.sodaBrand');
+        soda.set('sodaBrand', selectedSodaBrand);
+        soda.save().then(function() {
+          that.transitionToRoute('sodaBrands.sodaBrand.sodas');
+        });
+      },
+      cancelCreateSoda() {
+        this.transitionToRoute('sodaBrands.sodaBrand.sodas');
+      },
+      fileLoaded(file) {
+        this.set('currentFileData', file.data);
+      }
   }
 });

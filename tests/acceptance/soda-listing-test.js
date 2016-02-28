@@ -6,10 +6,10 @@ import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
 moduleForAcceptance('Acceptance | soda listing', {
-  beforeEach: function() {
-    server.loadFixtures();
-  },
-  afterEach: function() {}
+  beforeEach() {
+      server.loadFixtures();
+    },
+    afterEach() {}
 });
 
 test('visiting the soda listing for "Lesters Fixins"', function(assert) {
