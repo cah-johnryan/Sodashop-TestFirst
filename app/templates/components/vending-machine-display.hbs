@@ -1,0 +1,19 @@
+<div class="vendingMachinePanel">
+  <div>
+    <h4 id="vendingMachineDisplay">{{displayMessage}}</h4>
+  </div>
+  <div>
+    {{#paper-button id="quarter" action="insertQuarter"}}
+      <img src="/assets/quarter.png" alt=meh class="coinImage" />
+    {{/paper-button}}
+    {{#paper-button id="dime" action="insertDime"}}
+      <img src="/assets/dime.png" alt=meh class="coinImage" />
+    {{/paper-button}}
+    {{#paper-button id="nickel" action="insertNickel"}}
+      <img src="/assets/nickel.png" alt=meh class="coinImage" />
+    {{/paper-button}}
+    {{#paper-button id="penny" action="insertPenny"}}
+      <img src="/assets/penny.png" alt=meh class="coinImage" />
+    {{/paper-button}}
+  </div>
+</div>
