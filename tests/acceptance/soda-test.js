@@ -34,7 +34,7 @@ skip('when creating a soda (mirage issue)',
 test('when viewing soda details', function(assert) {
   click('md-list-item:nth-child(1) a');
   andThen(function() {
-    click('button[action="cancelEditSoda"]');
+    click('button[action="cancelViewDetails"]');
     andThen(function() {
       assert.equal(currentURL(), '/1/sodas',
         'the cancel button takes me back to the soda listing');

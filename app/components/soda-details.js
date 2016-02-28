@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    cancelEditSoda() {
-        this.get('cancelEditSoda')();
+    cancelViewDetails() {
+        this.get('cancelViewDetails')();
       },
       beginEditSoda() {
         this.get('beginEditSoda')();
