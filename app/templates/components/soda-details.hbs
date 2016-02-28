@@ -1,0 +1,13 @@
+{{#paper-card}}
+  <img src="{{soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
+  {{#paper-card-content}}
+    <h2>{{soda.name}}</h2>
+    <div>Price: <span id="sodaCost">{{soda.cost}}</span></div>
+    <div class="sodaQuantity">Quantity: <span id="sodaQuantity">{{soda.quantity}}</span></div>
+    <p>Description: {{soda.description}}</p>
+  {{/paper-card-content}}
+  <div class="md-actions" layout="row" layout-align="begin center">
+    {{#paper-button raised=true action="beginEditSoda"}}Edit{{/paper-button}}
+    {{#paper-button raised=true action="cancelEditSoda"}}Cancel{{/paper-button}}
+  </div>
+{{/paper-card}}
