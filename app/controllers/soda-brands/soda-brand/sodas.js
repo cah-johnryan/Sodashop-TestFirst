@@ -8,7 +8,6 @@ export default Ember.Controller.extend({
     purchaseSoda(soda) {
         let sodaBrandsController = this.get('sodaBrandsController');
         let amountInserted = sodaBrandsController.get('amountInserted');
-        let notify = sodaBrandsController.get('notify');
         let sodaCost = soda.get('cost');
         let sodaQuantity = soda.get('quantity');
         if (sodaQuantity > 0) {
@@ -22,18 +21,15 @@ export default Ember.Controller.extend({
         }
 
         function soldOut() {
-          notify.error(
-            'This soda is sold out.  Please select another soda.', {
-              closeAfter: null
-            });
+          sodaBrandsController.send('generateNotification', 'error',
+            'This soda is sold out.  Please select another soda.');
         }
 
         function notEnoughMoneyInserted() {
-          notify.warning('Not enough money has been inserted.  ' +
+          sodaBrandsController.send('generateNotification', 'warning',
+            'Not enough money has been inserted.  ' +
             'The price for ' + soda.get('name') + ' is ' +
-            soda.get('formattedPriceDollars') + '.', {
-              closeAfter: null
-            });
+            soda.get('formattedPriceDollars') + '.');
         }
 
         function dispenseSoda() {
@@ -41,10 +37,9 @@ export default Ember.Controller.extend({
           sodaBrandsController.set('amountInserted', amountInserted);
           soda.set('quantity', --sodaQuantity);
           soda.save();
-          notify.success(
-            soda.get('name') + ' dispensed.  Thank you!', {
-              closeAfter: null
-            });
+          sodaBrandsController.send('generateNotification', 'success', soda
+            .get('name') +
+            ' dispensed.  Thank you!');
         }
       },
       goToSoda: function(soda) {

@@ -13,6 +13,10 @@ export default Ember.Controller.extend({
       let notify = this.get('notify');
       if (notificationType === 'error') {
         notify.error(message, options);
+      } else if (notificationType === 'warning') {
+        notify.warning(message, options);
+      } else if (notificationType === 'success') {
+        notify.success(message, options);
       }
     }
   }
