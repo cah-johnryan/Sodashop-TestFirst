@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
             ' dispensed.  Thank you!');
         }
       },
-      goToSoda: function(soda) {
+      goToSoda(soda) {
         this.transitionToRoute('sodaBrands.sodaBrand.soda', soda.id);
       }
   }
