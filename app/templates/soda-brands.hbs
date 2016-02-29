@@ -1,15 +1,5 @@
 {{vending-machine-display amountInserted=amountInserted generateNotification=(action "generateNotification")}}
-{{#paper-toolbar}}
-  <div class="md-toolbar-tools">
-    {{#each model as |sodaBrand|}}
-      {{#paper-button}}
-        {{#link-to "sodaBrands.sodaBrand.sodas" sodaBrand.id}}
-          <span>{{sodaBrand.name}}</span>
-        {{/link-to}}
-      {{/paper-button}}
-    {{/each}}
-  </div>
-{{/paper-toolbar}}
+{{soda-shop-toolbar sodaBrands=model}}
 <div>
   {{#link-to "sodaBrands.create" id="createSodaBrandLink"}}{{paper-icon "add-circle" size=1}}{{/link-to}}
 </div>

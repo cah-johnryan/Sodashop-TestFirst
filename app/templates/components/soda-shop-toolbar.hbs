@@ -1,0 +1,11 @@
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools">
+    {{#each sodaBrands as |sodaBrand|}}
+      {{#paper-button}}
+        {{#link-to "sodaBrands.sodaBrand.sodas" sodaBrand.id}}
+          <span>{{sodaBrand.name}}</span>
+        {{/link-to}}
+      {{/paper-button}}
+    {{/each}}
+  </div>
+{{/paper-toolbar}}
