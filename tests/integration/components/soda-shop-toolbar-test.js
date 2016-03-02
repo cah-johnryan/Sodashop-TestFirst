@@ -2,7 +2,7 @@ import {
   moduleForComponent, test
 }
 from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+// import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('soda-shop-toolbar',
   'Integration | Component | soda shop toolbar', {
