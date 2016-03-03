@@ -1,19 +1,22 @@
 <div class="vendingMachinePanel">
-  <div>
-    <h4 id="vendingMachineDisplay">{{displayMessage}}</h4>
+  <div id="vendingMachineDisplay" class="blackBackground">
+    <h4>{{displayMessage}}</h4>
   </div>
-  <div>
-    {{#paper-button id="quarter" action="insertQuarter"}}
-      <img src="/assets/quarter.png" alt=meh class="coinImage" />
+  <div id="coinSlot">
+    {{coin-slot action="insertCoin"}}
+  </div>
+  <div id="coins">
+    {{#paper-button}}
+      {{vending-machine-coin coinName="quarter" imageLocation="/assets/quarter.png" insertCoin=(action "insertCoin")}}
     {{/paper-button}}
-    {{#paper-button id="dime" action="insertDime"}}
-      <img src="/assets/dime.png" alt=meh class="coinImage" />
+    {{#paper-button}}
+      {{vending-machine-coin coinName="dime" imageLocation="/assets/dime.png" insertCoin=(action "insertCoin")}}
     {{/paper-button}}
-    {{#paper-button id="nickel" action="insertNickel"}}
-      <img src="/assets/nickel.png" alt=meh class="coinImage" />
+    {{#paper-button}}
+      {{vending-machine-coin coinName="nickel" imageLocation="/assets/nickel.png" insertCoin=(action "insertCoin")}}
     {{/paper-button}}
-    {{#paper-button id="penny" action="insertPenny"}}
-      <img src="/assets/penny.png" alt=meh class="coinImage" />
+    {{#paper-button}}
+      {{vending-machine-coin coinName="penny" imageLocation="/assets/penny.png" insertCoin=(action "insertCoin")}}
     {{/paper-button}}
   </div>
 </div>

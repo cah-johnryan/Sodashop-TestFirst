@@ -7,7 +7,23 @@ export default Ember.Component.extend({
       '$' + amountInserted.toFixed(2) + ' INSERTED';
   }),
   actions: {
-    insertCoin(amount) {
+    insertCoin(coinName) {
+        let amount = 0;
+        switch (coinName) {
+          case 'quarter':
+            amount = 0.25;
+            break;
+          case 'dime':
+            amount = 0.10;
+            break;
+          case 'nickel':
+            amount = 0.05;
+            break;
+          case 'penny':
+            this.send('insertPenny');
+            break;
+          default:
+        }
         let currentAmountInserted = this.get('amountInserted');
         currentAmountInserted += amount;
         this.set('amountInserted', currentAmountInserted);
@@ -15,15 +31,6 @@ export default Ember.Component.extend({
       insertPenny() {
         this.get('generateNotification')('error',
           'This soda machine is not able to accept pennies');
-      },
-      insertNickel() {
-        this.send('insertCoin', 0.05);
-      },
-      insertDime() {
-        this.send('insertCoin', 0.10);
-      },
-      insertQuarter() {
-        this.send('insertCoin', 0.25);
       }
   }
 });

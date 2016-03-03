@@ -11,7 +11,7 @@ $warn: #f44336;
 .vendingMachinePanel {
   display: flex;
   flex-direction: row;
-  div {
+  #vendingMachineDisplay,#coinSlot,#coins {
     border-color: black;
     border-style: solid;
     border-top-width: .1em;
@@ -19,16 +19,30 @@ $warn: #f44336;
     border-left-width: 0em;
     border-right-width: 0em;
   }
-  div:nth-child(1) {
+  #vendingMachineDisplay,#coinSlot {
     background-color: black;
+  }
+  #vendingMachineDisplay {
     h4 {
       padding-left: .8em;
-      width: 15em;
+      width: 12em;
       color: white;
     }
   }
-  div:nth-child(2) {
+  #coinSlot{
+    img {
+      margin-top: .3em;
+      margin-left: .3em;
+      margin-right: .4em;
+      width: 3.2em;
+      height: 3.2em;
+    }
+  }
+  #coins {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
   }
   .coinImage {
     margin-top: .7em;
