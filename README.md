@@ -1,5 +1,10 @@
 # Sodashop-VendingMachine
 
+This repo is was originally based on a blog found at: https://www.twilio.com/blog/2015/09/using-ember-data-with-firebase.html
+
+I've moved this further into a kata that I was introduced to some time ago found at:
+https://github.com/guyroyse/vending-machine-kata
+
 Vending Machine Kata
 ====================
 
