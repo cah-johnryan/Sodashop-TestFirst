@@ -1,6 +1,7 @@
-<h3>Soda details:</h3>
 {{#if model.edit}}
+  <h3>Soda details (edit mode):</h3>
   {{soda-details-editable soda=model.soda returnToSodaListing=(action "returnToSodaListing")}}
 {{else}}
+  <h3>Soda details:</h3>
   {{soda-details soda=model.soda cancelViewDetails=(action "returnToSodaListing") beginEditSoda=(action "beginEditSoda")}}
 {{/if}}

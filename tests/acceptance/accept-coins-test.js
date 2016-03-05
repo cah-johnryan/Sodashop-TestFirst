@@ -8,7 +8,13 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | accept coins', {
   beforeEach() {
       server.loadFixtures();
-      visit('/');
+      visit('/login');
+      fillIn('#identification', 'testUser');
+      fillIn('#password', 'testPassword');
+      click('#login');
+      andThen(function() {
+        visit('/');
+      });
     },
     afterEach() {}
 });

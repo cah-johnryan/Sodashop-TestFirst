@@ -1,3 +1,5 @@
+import Mirage from 'ember-cli-mirage';
+
 export default function() {
   this.urlPrefix = ''; // make this `http://localhost:8080`, for example, if your API is on a different server
   this.namespace = ''; // make this `api`, for example, if your API is namespaced
@@ -56,5 +58,40 @@ export default function() {
     return {
       soda: record
     };
+  });
+
+  this.post('/token', function(db, request) {
+    var attrs = parseNonJsonBody(request.requestBody);
+    if (attrs.grant_type === 'password') {
+      if (attrs.username === 'testUser' && attrs.password ===
+        'testPassword') {
+        return buildResponse(200, {
+          access_token: 'secret token!'
+        });
+      } else {
+        return buildResponse(400, {
+          message: 'invalid login information provided'
+        });
+      }
+    } else {
+      return buildResponse(400, {
+        message: 'unsupported grant type'
+      });
+    }
+
+    function parseNonJsonBody(nonJsonBody) {
+      let result = {};
+      window._.each(nonJsonBody.split("&"), function(item) {
+        var keyPair = item.split("=");
+        result[keyPair[0]] = keyPair[1];
+      });
+      return result;
+    }
+
+    function buildResponse(responseType, responseJsonObject) {
+      return new Mirage.Response(responseType, {
+        some: 'header'
+      }, responseJsonObject);
+    }
   });
 }
