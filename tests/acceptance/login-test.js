@@ -9,6 +9,7 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | login');
 
 test('visiting /login', function(assert) {
+  server.loadFixtures();
   visit('/login');
 
   andThen(function() {
@@ -17,13 +18,14 @@ test('visiting /login', function(assert) {
 });
 
 // TODO: constructor error
-skip('after logging in the option to logout is provided', function(assert) {
-  visit('/login');
-  fillIn('#identification input', 'testUser');
-  fillIn('#password input', 'testPassword');
-  click('#login');
-  andThen(function() {
-    assert.ok($('#logout').text().trim().length !== 0,
-      'the logout button appears as a result');
+skip('after logging in the option to logout is provided (constructor error)',
+  function(assert) {
+    visit('/login');
+    fillIn('#identification input', 'testUser');
+    fillIn('#password input', 'testPassword');
+    click('#login');
+    andThen(function() {
+      assert.ok($('#logout').text().trim().length !== 0,
+        'the logout button appears as a result');
+    });
   });
-});

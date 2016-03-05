@@ -1,6 +1,5 @@
 import {
-  // test,
-  skip
+  test
 }
 from 'qunit';
 import moduleForAcceptance from
@@ -8,23 +7,17 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | soda listing', {
   beforeEach() {
+      server.loadFixtures();
       visit('/login');
-      andThen(function() {
-        fillIn('#identification input', 'testUser');
-        fillIn('#password input', 'testPassword');
-        click('#login');
-        andThen(function() {
-          server.loadFixtures();
-        });
-      });
+      fillIn('#identification input', 'testUser');
+      fillIn('#password input', 'testPassword');
+      click('#login');
     },
     afterEach() {}
 });
 
-skip('visiting the soda listing for "Lesters Fixins"', function(assert) {
-  // assert.expect(17);
+test('visiting the soda listing for "Lesters Fixins"', function(assert) {
   visit('/1/sodas');
-
   andThen(function() {
     assert.equal($('md-list-item').length, 8,
       "exactly eight items are displayed");

@@ -26,26 +26,21 @@ skip('when creating a soda (mirage issue)',
   // manually verified that this feature function once I integrated firebase.
   function(assert) {
     assert.expect(1);
-
     click('#createSodaLink');
+    fillIn('#sodaNameInput input', 'My new soda');
+    click('#createSoda');
     andThen(function() {
-      fillIn('#sodaNameInput input', 'My new soda');
-      click('#createSoda');
-      andThen(function() {
-        assert.ok($('h3:contains("My new soda")').length > 0,
-          'it displays "My new soda"');
-      });
+      assert.ok($('h3:contains("My new soda")').length > 0,
+        'it displays "My new soda"');
     });
   });
 
 test('when viewing soda details', function(assert) {
   click('md-list-item:nth-child(1) a');
+  click('button[action="cancelViewDetails"]');
   andThen(function() {
-    click('button[action="cancelViewDetails"]');
-    andThen(function() {
-      assert.equal(currentURL(), '/1/sodas',
-        'the cancel button takes me back to the soda listing');
-    });
+    assert.equal(currentURL(), '/1/sodas',
+      'the cancel button takes me back to the soda listing');
   });
 });
 
@@ -53,20 +48,14 @@ test('when creating a soda',
   function(assert) {
     assert.expect(1);
     click('#createSodaLink');
+    fillIn('#sodaNameInput input', 'My new soda');
+    click('#createSoda');
+    click('md-toolbar button:nth-child(3) a');
+    click('md-toolbar button:nth-child(1) a');
     andThen(function() {
-      fillIn('#sodaNameInput input', 'My new soda');
-      click('#createSoda');
-      andThen(function() {
-        click('md-toolbar button:nth-child(3) a');
-        andThen(function() {
-          click('md-toolbar button:nth-child(1) a');
-          andThen(function() {
-            assert.ok($('h3:contains("My new soda")').length >
-              0,
-              'it displays "My new soda"');
-          });
-        });
-      });
+      assert.ok($('h3:contains("My new soda")').length >
+        0,
+        'it displays "My new soda"');
     });
   });
 
@@ -74,47 +63,44 @@ test('when creating a soda',
 skip('when editing on a soda in the listing (mirage issue)', function(assert) {
   assert.expect(7);
   click('md-list-item:nth-child(1) a');
+  click('button[action="beginEditSoda"]');
   andThen(function() {
-    click('button[action="beginEditSoda"]');
-    assert.ok($('md-card h2').text(), 'Bacon Soda with Chocolate',
+    assert.ok($('#sodaEditName input').val(),
+      'Bacon Soda with Chocolate',
       'the name is displayed'
     );
-    assert.equal($('#sodaCost').text(), '0.5',
+    assert.equal($('#sodaEditCost input').val(), '0.5',
       'the price is displayed'
     );
-    assert.equal($('#sodaQuantity').text(), '2',
+    assert.equal($('#sodaEditQuantity input').val(), '2',
       'the quantity is displayed'
     );
-    assert.equal($('md-card p').text().trim(),
-      "Description: Taste's like bacon",
+    assert.equal($('#sodaEditDescription input').val().trim(),
+      "Taste's like bacon",
       'the description is displayed'
     );
+    fillIn('#sodaEditName input', 'New edited soda name');
+    fillIn('#sodaEditCost input', '123.45');
+    fillIn('#sodaEditQuantity input', '0');
+    fillIn('#sodaEditDescription input',
+      'New edited soda description');
+    click('button[action="updateSoda"]');
     andThen(function() {
-      fillIn('#sodaEditName input', 'New edited soda name');
-      fillIn('#sodaEditCost input', '123.45');
-      fillIn('#sodaEditQuantity input', '0');
-      fillIn('#sodaEditDescription input',
-        'New edited soda description');
-      andThen(function() {
-        click('button[action="updateSoda"]');
-        andThen(function() {
-          assert.ok($('h3:contains("New edited soda name")')
-            .length >
-            0,
-            'the name changes properly to "New edited soda name"'
-          );
-          assert.equal($('md-list-item:nth-child(1) h4').text(),
-            'SOLD OUT',
-            'the product now states that it is sold out');
-          assert.ok($(
-              'p:contains("New edited soda description")'
-            )
-            .length >
-            0,
-            'the description changes properly to "New edited soda description"'
-          );
-        });
-      });
+      assert.ok($('h3:contains("New edited soda name")')
+        .length >
+        0,
+        'the name changes properly to "New edited soda name"'
+      );
+      assert.equal($('md-list-item:nth-child(1) h4').text(),
+        'SOLD OUT',
+        'the product now states that it is sold out');
+      assert.ok($(
+          'p:contains("New edited soda description")'
+        )
+        .length >
+        0,
+        'the description changes properly to "New edited soda description"'
+      );
     });
   });
 });

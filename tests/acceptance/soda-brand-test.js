@@ -22,7 +22,6 @@ moduleForAcceptance('Acceptance | soda brand', {
 test('when creating a soda brand',
   function(assert) {
     assert.expect(2);
-
     click('#createSodaBrandLink');
     fillIn('#brandNameInput input', 'My new soda brand');
     click('#createSodaBrand');
@@ -39,7 +38,6 @@ test('when creating a soda brand',
 
 test('when a soda brand is selected', function(assert) {
   assert.expect(2);
-
   click('md-toolbar a[href="/1/sodas"]');
   andThen(function() {
     assert.ok($('.sodaImage').length > 0,
@@ -51,16 +49,11 @@ test('when a soda brand is selected', function(assert) {
 
 test('when clicking on the soda brand image', function(assert) {
   assert.expect(1);
-
   click('md-toolbar a[href="/1/sodas"]');
+  click('md-list-item:nth-child(1) button');
+  click('#sodaBrandImage');
   andThen(function() {
-    click('md-list-item:nth-child(1) button');
-    andThen(function() {
-      click('#sodaBrandImage');
-      andThen(function() {
-        assert.equal(currentURL(), '/1/sodas',
-          'I was routed to the soda listing');
-      });
-    });
+    assert.equal(currentURL(), '/1/sodas',
+      'I was routed to the soda listing');
   });
 });
