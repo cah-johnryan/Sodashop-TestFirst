@@ -12,6 +12,15 @@ $warn: #f44336;
   float: right;
   margin-top: -.2em;
 }
+
+#loginErrorMessage {
+  margin-top: 1em;
+  color: $warn;
+  span {
+    font-weight: bold;
+  }
+}
+
 .vendingMachinePanel {
   display: flex;
   flex-direction: row;
