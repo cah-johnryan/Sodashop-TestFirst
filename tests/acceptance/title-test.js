@@ -9,8 +9,8 @@ moduleForAcceptance('Acceptance | title', {
   beforeEach() {
       server.loadFixtures();
       visit('/login');
-      fillIn('#identification', 'testUser');
-      fillIn('#password', 'testPassword');
+      fillIn('#identification input', 'testUser');
+      fillIn('#password input', 'testPassword');
       click('#login');
       andThen(function() {
         visit('/');
@@ -23,6 +23,6 @@ test('the title should state "Sodashop"', function(assert) {
   assert.expect(1);
 
   andThen(function() {
-    assert.equal($('#title').text(), 'Sodashop');
+    assert.equal($('#title').text().split(" ")[0].trim(), 'Sodashop');
   });
 });

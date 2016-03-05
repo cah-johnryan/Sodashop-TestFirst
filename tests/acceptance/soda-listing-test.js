@@ -10,8 +10,8 @@ moduleForAcceptance('Acceptance | soda listing', {
   beforeEach() {
       visit('/login');
       andThen(function() {
-        fillIn('#identification', 'testUser');
-        fillIn('#password', 'testPassword');
+        fillIn('#identification input', 'testUser');
+        fillIn('#password input', 'testPassword');
         click('#login');
         andThen(function() {
           server.loadFixtures();

@@ -31,9 +31,11 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
+    ENV.notificationCloseAfter = 2500;
   }
 
   if (environment === 'test') {
@@ -49,12 +51,14 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
+    ENV.notificationCloseAfter = null;
   }
 
   if (environment === 'production') {
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
+    ENV.notificationCloseAfter = 2500;
   }
 
   return ENV;

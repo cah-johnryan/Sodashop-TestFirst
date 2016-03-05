@@ -9,8 +9,8 @@ moduleForAcceptance('Acceptance | accept coins', {
   beforeEach() {
       server.loadFixtures();
       visit('/login');
-      fillIn('#identification', 'testUser');
-      fillIn('#password', 'testPassword');
+      fillIn('#identification input', 'testUser');
+      fillIn('#password input', 'testPassword');
       click('#login');
       andThen(function() {
         visit('/');
