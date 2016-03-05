@@ -8,6 +8,10 @@ $warn: #f44336;
   cursor:pointer;
 }
 
+#logout {
+  float: right;
+  margin-top: -.2em;
+}
 .vendingMachinePanel {
   display: flex;
   flex-direction: row;

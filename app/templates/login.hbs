@@ -1,10 +1,6 @@
-<form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input id='identification' placeholder='Enter Login' value=identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button id='login' type="submit">Login</button>
+  {{paper-input id='identification' label='Login' value=identification}}
+  {{paper-input id='password' label='Password' type='password' value=password}}
+  {{#paper-button id='login' raised=true primary=true action='authenticate' target=component}}Login{{/paper-button}}
   {{#if errorMessage}}
     <p>Login failed: {{errorMessage}}</p>
   {{/if}}
-</form>

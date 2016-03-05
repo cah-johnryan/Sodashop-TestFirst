@@ -1,7 +1,6 @@
-<h2 id="title" class="giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop</h2>
-{{#if session.isAuthenticated}}
-  <a {{action 'invalidateSession'}}>Logout</a>
-{{else}}
-  {{#link-to 'login'}}Login{{/link-to}}
-{{/if}}
+<h2 id="title" class="giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop
+  {{#if session.isAuthenticated}}
+    {{#paper-button id='logout' raised=true action='invalidateSession'}}Logout{{/paper-button}}
+  {{/if}}
+</h2>
 {{outlet}}
