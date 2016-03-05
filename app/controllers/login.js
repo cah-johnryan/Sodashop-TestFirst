@@ -14,6 +14,8 @@ export default Ember.Controller.extend({
         authenticationRejected);
 
       function authenticationSucceeded() {
+        that.set('identification', '');
+        that.set('password', '');
         that.transitionToRoute('sodaBrands');
       }
 
