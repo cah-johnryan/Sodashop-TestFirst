@@ -37,9 +37,8 @@ export default Ember.Controller.extend({
           sodaBrandsController.set('amountInserted', amountInserted);
           soda.set('quantity', --sodaQuantity);
           soda.save();
-          sodaBrandsController.send('generateNotification', 'success', soda
-            .get('name') +
-            ' dispensed.  Thank you!');
+          sodaBrandsController.send('generateProductPurchasedNotification',
+            soda.get('image'), soda.get('name'));
         }
       },
       goToSoda(soda) {

@@ -27,7 +27,7 @@ test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',
     visit('/1/sodas');
     click('md-list-item:nth-child(5) button');
     andThen(function() {
-      assert.equal($('.message').text(),
+      assert.equal($('.message .md-list-item-text>span').text(),
         'Sweet Corn Soda dispensed.  Thank you!',
         'the machine dispenses the product');
       assert.equal($('#vendingMachineDisplay>h4').text(), 'INSERT COIN',
@@ -44,7 +44,7 @@ test('When selecting "Sweet Corn Soda" with $0.60 inserted into the machine',
     visit('/1/sodas');
     click('md-list-item:nth-child(5) button');
     andThen(function() {
-      assert.equal($('.message').text(),
+      assert.equal($('.message .md-list-item-text>span').text(),
         'Sweet Corn Soda dispensed.  Thank you!',
         'the machine dispenses the product');
       assert.equal($('#vendingMachineDisplay>h4').text(),
@@ -109,7 +109,7 @@ test('When selecting the last soda', function(assert) {
   visit('/2/sodas');
   click('md-list-item:nth-child(1) button');
   andThen(function() {
-    assert.equal($('.message').text(),
+    assert.equal($('.message .md-list-item-text>span').text(),
       'Apple Pie Soda dispensed.  Thank you!',
       'the machine dispenses the product');
     assert.equal($('md-list-item:nth-child(1) h4').text(),
