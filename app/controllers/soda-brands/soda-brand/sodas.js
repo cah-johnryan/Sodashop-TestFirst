@@ -37,12 +37,27 @@ export default Ember.Controller.extend({
           sodaBrandsController.set('amountInserted', amountInserted);
           soda.set('quantity', --sodaQuantity);
           soda.save();
-          sodaBrandsController.send('generateProductPurchasedNotification',
-            soda.get('image'), soda.get('name'));
+          generateProductPurchasedNotification(soda.get('image'), soda.get(
+            'name'));
+        }
+
+        function generateProductPurchasedNotification(productImage,
+          productName) {
+          let message = '<md-list-item>' +
+            '  <div class="md-list-item-inner">' +
+            '    <img alt="meh" class="md-avatar" src="' + productImage +
+            '"/>' +
+            '    <div class="md-list-item-text">' +
+            '      <span>' + productName + ' dispensed.  Thank you!</span>' +
+            '    </div>' +
+            '  </div>' +
+            '</md-list-item>';
+          sodaBrandsController.send('generateNotification', 'raw', message);
         }
       },
       goToSoda(soda) {
         this.transitionToRoute('sodaBrands.sodaBrand.soda', soda.id);
       }
   }
+
 });
