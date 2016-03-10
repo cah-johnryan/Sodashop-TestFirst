@@ -1,6 +1,8 @@
+<form {{action "authenticate" on="submit"}}>
   {{paper-input id='identification' label='Login' value=identification}}
   {{paper-input id='password' label='Password' type='password' value=password}}
   {{#paper-button id='login' raised=true primary=true action='authenticate'}}Login{{/paper-button}}
+</form>
   {{#if errorMessage}}
     <p id='loginErrorMessage' class='giveMeSpaceToBreathe'><span>Login failed:</span> {{errorMessage}}</p>
   {{/if}}
