@@ -1,12 +1,16 @@
 import {
-  skip,
   test
 }
 from 'qunit';
 import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | login');
+moduleForAcceptance('Acceptance | login', {
+  beforeEach() {
+      server.loadFixtures();
+    },
+    afterEach() {}
+});
 
 test('visiting /login', function(assert) {
   server.loadFixtures();
@@ -17,8 +21,7 @@ test('visiting /login', function(assert) {
   });
 });
 
-// TODO: constructor error
-skip('after logging in the option to logout is provided (constructor error)',
+test('after logging in the option to logout is provided',
   function(assert) {
     visit('/login');
     fillIn('#identification input', 'testUser');
@@ -27,5 +30,6 @@ skip('after logging in the option to logout is provided (constructor error)',
     andThen(function() {
       assert.ok($('#logout').text().trim().length !== 0,
         'the logout button appears as a result');
+      assert.equal($('.logout>span').text(), 'Welcome Test User');
     });
   });

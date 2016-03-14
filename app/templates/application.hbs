@@ -1,6 +1,10 @@
-<h2 id="title" class="giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop
+<div class="header">
+  <div class="title giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop</div>
   {{#if session.isAuthenticated}}
+  <div class="logout">
+    <span>Welcome {{model.fullName}}</span>
     {{#paper-button id='logout' raised=true action='invalidateSession'}}Logout{{/paper-button}}
+  </div>
   {{/if}}
-</h2>
+</div>
 {{outlet}}

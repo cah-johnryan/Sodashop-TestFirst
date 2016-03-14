@@ -22,6 +22,6 @@ moduleForAcceptance('Acceptance | title', {
 test('the title should state "Sodashop"', function(assert) {
   assert.expect(1);
   andThen(function() {
-    assert.equal($('#title').text().split(" ")[0].trim(), 'Sodashop');
+    assert.equal($('.title').text().split(" ")[0].trim(), 'Sodashop');
   });
 });

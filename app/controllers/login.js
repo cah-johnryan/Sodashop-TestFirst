@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
+  applicationController: Ember.inject.controller('application'),
   actions: {
     authenticate() {
       let {
@@ -14,9 +15,11 @@ export default Ember.Controller.extend({
         authenticationRejected);
 
       function authenticationSucceeded() {
-        that.set('identification', '');
-        that.set('password', '');
-        that.transitionToRoute('sodaBrands');
+        let sessionUserId = that.get('session.data.authenticated.userId');
+        that.store.find('user', sessionUserId).then(function(user) {
+          that.get('applicationController').set('model', user);
+          that.transitionToRoute('sodaBrands');
+        });
       }
 
       function authenticationRejected(reason) {

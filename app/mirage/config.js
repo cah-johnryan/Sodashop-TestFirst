@@ -60,13 +60,26 @@ export default function() {
     };
   });
 
+  this.get('/users/:id', function(db, request) {
+    let id = request.params.id;
+    let requestedUser = db.users.find(id);
+    requestedUser.password = '(omitted)';
+    return {
+      user: requestedUser
+    };
+  });
+
   this.post('/token', function(db, request) {
     var attrs = parseNonJsonBody(request.requestBody);
     if (attrs.grant_type === 'password') {
-      if (attrs.username === 'testUser' && attrs.password ===
-        'testPassword') {
+      let requestedUser = db.users.where({
+        userName: attrs.username,
+        password: attrs.password
+      })[0];
+      if (requestedUser) {
         return buildResponse(200, {
-          access_token: 'secret token!'
+          access_token: 'secret token!',
+          userId: requestedUser.id
         });
       } else {
         return buildResponse(400, {

@@ -4,13 +4,18 @@ $primary: "blue";
 $primary: #2196f3;
 $warn: #f44336;
 
-#title {
-  cursor:pointer;
-}
-
-#logout {
-  float: right;
-  margin-top: -.2em;
+.header {
+  height: 2.5em;
+  .title {
+    margin: .5em;
+    cursor:pointer;
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .logout {
+    float: right;
+    margin-top: -3.1em;
+  }
 }
 
 #loginErrorMessage {
