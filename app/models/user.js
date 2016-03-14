@@ -6,6 +6,9 @@ export default DS.Model.extend({
   password: DS.attr('string'),
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
+  hasManagementPrivileges: DS.attr('boolean', {
+    defaultValue: false
+  }),
   fullName: Ember.computed('firstName', 'lastName', function() {
     return this.get('firstName') + ' ' + this.get('lastName');
   })

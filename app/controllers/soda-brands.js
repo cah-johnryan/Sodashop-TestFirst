@@ -2,9 +2,10 @@ import Config from '../config/environment';
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  applicationController: Ember.inject.controller('application'),
+  applicationModel: Ember.computed.reads('applicationController.model'),
   notify: Ember.inject.service('notify'),
   notificationCloseAfter: Config.notificationCloseAfter,
-
   amountInserted: 0,
   actions: {
     generateNotification(notificationType, message, options) {

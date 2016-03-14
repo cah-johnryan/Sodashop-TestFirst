@@ -3,11 +3,13 @@ export default [{
   userName: 'testUser',
   password: 'testPassword',
   firstName: 'Test',
-  lastName: 'User'
+  lastName: 'User',
+  hasManagementPrivileges: false
 }, {
   id: 2,
   userName: 'testAdmin',
   password: 'testPassword',
   firstName: 'Test',
-  lastName: 'Admin'
+  lastName: 'Admin',
+  hasManagementPrivileges: true
 }];
