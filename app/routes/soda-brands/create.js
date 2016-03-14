@@ -10,7 +10,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     if (sessionUserId) {
       this.store.find('user', sessionUserId).then(function(user) {
         if (!user.get('hasManagementPrivileges')) {
-          that.transitionTo('login');
+          that.transitionTo('pageNotAvailable');
         }
       });
     } else {

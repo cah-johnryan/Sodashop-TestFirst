@@ -23,7 +23,7 @@ test('when trying to create a soda and not having the appropriate privileges',
   function(assert) {
     visit('/create');
     andThen(function() {
-      assert.equal(currentURL(), '/login');
+      assert.equal(currentURL(), '/pageNotAvailable');
     });
   }
 );

@@ -22,6 +22,8 @@ Router.map(function() {
     });
     this.route('create');
   });
+  this.route('pqgeNotAvailable');
+  this.route('pageNotAvailable');
 });
 
 export default Router;
