@@ -8,13 +8,13 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | login', {
   beforeEach() {
       server.loadFixtures();
+      visit('/');
     },
     afterEach() {}
 });
 
 test('visiting /login', function(assert) {
-  visit('/login');
-
+  click('#login');
   andThen(function() {
     assert.equal(currentURL(), '/login');
     assert.equal($('#identification input').text(), '');
@@ -24,10 +24,10 @@ test('visiting /login', function(assert) {
 
 test('after logging in the option to logout is provided',
   function(assert) {
-    visit('/login');
+    click('#login');
     fillIn('#identification input', 'testUser');
     fillIn('#password input', 'testPassword');
-    click('#login');
+    click('#authenticate');
     andThen(function() {
       assert.ok($('#logout').text().trim().length !== 0,
         'the logout button appears as a result');
@@ -37,12 +37,13 @@ test('after logging in the option to logout is provided',
 
 test('when logging out I am returned to a fresh login screen',
   function(assert) {
-    visit('/login');
+    click('#login');
     fillIn('#identification input', 'testUser');
     fillIn('#password input', 'testPassword');
-    click('#login');
+    click('#authenticate');
     andThen(function() {
       click('#logout');
+      click('#login');
       andThen(function() {
         assert.equal(currentURL(), '/login');
         assert.equal($('#identification input').text(), '');
