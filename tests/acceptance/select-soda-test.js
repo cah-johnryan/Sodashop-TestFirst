@@ -11,7 +11,7 @@ moduleForAcceptance('Acceptance | select product', {
       visit('/login');
       fillIn('#identification input', 'testUser');
       fillIn('#password input', 'testPassword');
-      click('#login');
+      click('#authenticate');
       andThen(function() {
         visit('/');
       });

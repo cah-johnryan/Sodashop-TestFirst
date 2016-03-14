@@ -11,7 +11,7 @@ moduleForAcceptance('Acceptance | soda listing', {
       visit('/login');
       fillIn('#identification input', 'testUser');
       fillIn('#password input', 'testPassword');
-      click('#login');
+      click('#authenticate');
     },
     afterEach() {}
 });
