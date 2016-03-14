@@ -15,6 +15,8 @@ export default Ember.Controller.extend({
         authenticationRejected);
 
       function authenticationSucceeded() {
+        that.set('identification', '');
+        that.set('password', '');
         let sessionUserId = that.get('session.data.authenticated.userId');
         that.store.find('user', sessionUserId).then(function(user) {
           that.get('applicationController').set('model', user);
