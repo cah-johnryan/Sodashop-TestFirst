@@ -45,7 +45,6 @@ skip('when creating a soda (mirage issue)',
 
 // TODO: !!! Mirage won't maintain the updated values on the redirect !!!
 skip('when editing on a soda in the listing (mirage issue)', function(assert) {
-  assert.expect(7);
   click('md-list-item:nth-child(1) a');
   click('button[action="beginEditSoda"]');
   andThen(function() {

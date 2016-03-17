@@ -21,7 +21,6 @@ moduleForAcceptance('Acceptance | select product', {
 
 test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',
   function(assert) {
-    assert.expect(2);
     click('#quarter');
     click('#quarter');
     visit('/1/sodas');
@@ -37,7 +36,6 @@ test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',
 
 test('When selecting "Sweet Corn Soda" with $0.60 inserted into the machine',
   function(assert) {
-    assert.expect(2);
     click('#quarter');
     click('#quarter');
     click('#dime');
@@ -70,7 +68,6 @@ test('When selecting "Sweet Corn Soda" when not enough money is inserted',
   });
 
 test('When selecting a soda that is sold out', function(assert) {
-  assert.expect(2);
   click('#quarter');
   visit('/1/sodas');
   click('md-list-item:nth-child(7) button');

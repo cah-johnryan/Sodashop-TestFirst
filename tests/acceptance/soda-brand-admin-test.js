@@ -21,7 +21,6 @@ moduleForAcceptance('Acceptance | soda brand admin', {
 
 test('when creating a soda brand',
   function(assert) {
-    assert.expect(2);
     click('#createSodaBrandLink');
     fillIn('#brandNameInput input', 'My new soda brand');
     click('#createSodaBrand');
