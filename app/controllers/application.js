@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
       },
       invalidateSession() {
         this.get('session').invalidate();
-        this.transitionToRoute('sodaBrands');
+        this.set('model', null);
       },
       login() {
         this.transitionToRoute('login');
