@@ -5,18 +5,22 @@ from 'qunit';
 import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | soda listing', {
+moduleForAcceptance('Acceptance | soda listing admin', {
   beforeEach() {
       server.loadFixtures();
+      visit('/login');
+      fillIn('#identification input', 'testAdmin');
+      fillIn('#password input', 'testPassword');
+      click('#authenticate');
     },
     afterEach() {}
 });
 
-test('the create soda icon is not present', function(assert) {
+test('the create soda icon is present', function(assert) {
   visit('/1/sodas');
   andThen(function() {
-    assert.equal($('#createSodaLink').is(":visible"), false,
-      'the icon is not present');
+    assert.ok($('#createSodaLink').is(":visible"),
+      'the icon is present');
   });
 });
 

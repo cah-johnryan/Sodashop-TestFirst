@@ -8,10 +8,6 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | select product', {
   beforeEach() {
       server.loadFixtures();
-      visit('/login');
-      fillIn('#identification input', 'testUser');
-      fillIn('#password input', 'testPassword');
-      click('#authenticate');
       andThen(function() {
         visit('/');
       });

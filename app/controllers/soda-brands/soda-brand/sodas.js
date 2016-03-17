@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  applicationController: Ember.inject.controller('application'),
+  applicationModel: Ember.computed.reads('applicationController.model'),
   sodaBrandsController: Ember.inject.controller('sodaBrands'),
   sodaBrandController: Ember.inject.controller('sodaBrands.sodaBrand'),
   sodaBrandModel: Ember.computed.reads('sodaBrandController.model'),

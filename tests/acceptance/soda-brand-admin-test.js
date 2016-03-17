@@ -19,6 +19,14 @@ moduleForAcceptance('Acceptance | soda brand admin', {
     afterEach() {}
 });
 
+test('the create soda brands icon is present', function(assert) {
+  visit('/1/sodas');
+  andThen(function() {
+    assert.ok($('#createSodaBrandLink').is(":visible"),
+      'the icon is present');
+  });
+});
+
 test('when creating a soda brand',
   function(assert) {
     click('#createSodaBrandLink');

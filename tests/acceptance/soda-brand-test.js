@@ -8,22 +8,38 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | soda brand', {
   beforeEach() {
       server.loadFixtures();
-      visit('/login');
-      fillIn('#identification input', 'testUser');
-      fillIn('#password input', 'testPassword');
-      click('#authenticate');
-      andThen(function() {
-        visit('/');
-      });
     },
     afterEach() {}
 });
 
-test('when trying to create a soda and not having the appropriate privileges',
+test('the create soda brands icon is not present', function(assert) {
+  visit('/1/sodas');
+  andThen(function() {
+    assert.equal($('#createSodaBrandLink').is(":visible"), false,
+      'the icon is not present');
+  });
+});
+
+test('when trying to create a soda and and not having logged in',
   function(assert) {
     visit('/create');
     andThen(function() {
-      assert.equal(currentURL(), '/pageNotAvailable');
+      assert.equal(currentURL(), '/login');
+    });
+  }
+);
+
+test('when trying to create a soda and not having the appropriate privileges',
+  function(assert) {
+    visit('/login');
+    fillIn('#identification input', 'testUser');
+    fillIn('#password input', 'testPassword');
+    click('#authenticate');
+    andThen(function() {
+      visit('/create');
+      andThen(function() {
+        assert.equal(currentURL(), '/pageNotAvailable');
+      });
     });
   }
 );
