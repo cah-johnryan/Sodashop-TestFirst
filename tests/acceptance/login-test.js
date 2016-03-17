@@ -13,12 +13,15 @@ moduleForAcceptance('Acceptance | login', {
     afterEach() {}
 });
 
-test('visiting /login', function(assert) {
+test('when clicking the login button', function(assert) {
   click('#login');
   andThen(function() {
-    assert.equal(currentURL(), '/login');
-    assert.equal($('#identification input').text(), '');
-    assert.equal($('#password input').text(), '');
+    assert.equal(currentURL(), '/login',
+      'you are directed to the login screen');
+    assert.equal($('#identification input').text(), '',
+      'it prompts you for a user name');
+    assert.equal($('#password input[type="password"]').text(), '',
+      'it prompts you for a password in a protected password field');
   });
 });
 
