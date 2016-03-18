@@ -11,9 +11,8 @@ moduleForAcceptance('Acceptance | soda admin', {
       visit('/login');
       fillIn('#identification input', 'testAdmin');
       fillIn('#password input', 'testPassword');
-      click('#login');
+      click('#authenticate');
       andThen(function() {
-        server.loadFixtures();
         visit('/1/sodas');
       });
     },

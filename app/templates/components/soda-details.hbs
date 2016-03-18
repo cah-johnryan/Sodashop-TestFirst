@@ -7,7 +7,9 @@
     <p>Description: {{soda.description}}</p>
   {{/paper-card-content}}
   <div class="md-actions" layout="row" layout-align="begin center">
-    {{#paper-button raised=true action="beginEditSoda"}}Edit{{/paper-button}}
-    {{#paper-button raised=true action="cancelViewDetails"}}Cancel{{/paper-button}}
+    {{#if hasManagementPrivileges}}
+      {{#paper-button raised=true action="beginEditSoda"}}Edit{{/paper-button}}
+      {{#paper-button raised=true action="cancelViewDetails"}}Cancel{{/paper-button}}
+    {{/if}}
   </div>
 {{/paper-card}}

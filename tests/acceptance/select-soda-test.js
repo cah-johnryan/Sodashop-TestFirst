@@ -78,24 +78,6 @@ test('When selecting a soda that is sold out', function(assert) {
   });
 });
 
-test('When updating the quantity of a soda that is sold out', function(assert) {
-  visit('/1/sodas');
-  andThen(function() {
-    assert.equal($('md-list-item:nth-child(7) h4').text(),
-      'SOLD OUT', 'the product now states that it is sold out');
-    click('md-list-item:nth-child(7) a');
-    click('button[action="beginEditSoda"]');
-    fillIn('#sodaEditQuantity input', '1');
-    click('button[action="updateSoda"]');
-    andThen(function() {
-      assert.equal($('md-list-item:nth-child(7) h4').text(),
-        '$0.50',
-        'the product now states its price (not sold out)'
-      );
-    });
-  });
-});
-
 test('When selecting the last soda', function(assert) {
   click('#quarter');
   click('#quarter');
@@ -108,5 +90,4 @@ test('When selecting the last soda', function(assert) {
     assert.equal($('md-list-item:nth-child(1) h4').text(),
       'SOLD OUT', 'the product now states that it is sold out');
   });
-
 });
