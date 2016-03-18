@@ -6,17 +6,9 @@
     {{coin-slot action="insertCoin"}}
   </div>
   <div id="coins">
-    {{#paper-button}}
-      {{vending-machine-coin coinName="quarter" imageLocation="/assets/quarter.png" insertCoin=(action "insertCoin")}}
-    {{/paper-button}}
-    {{#paper-button}}
-      {{vending-machine-coin coinName="dime" imageLocation="/assets/dime.png" insertCoin=(action "insertCoin")}}
-    {{/paper-button}}
-    {{#paper-button}}
-      {{vending-machine-coin coinName="nickel" imageLocation="/assets/nickel.png" insertCoin=(action "insertCoin")}}
-    {{/paper-button}}
-    {{#paper-button}}
-      {{vending-machine-coin coinName="penny" imageLocation="/assets/penny.png" insertCoin=(action "insertCoin")}}
-    {{/paper-button}}
+    {{vending-machine-coin coinName="quarter" imageLocation="/assets/quarter.png" insertCoin=(action "insertCoin")}}
+    {{vending-machine-coin coinName="dime" imageLocation="/assets/dime.png" insertCoin=(action "insertCoin")}}
+    {{vending-machine-coin coinName="nickel" imageLocation="/assets/nickel.png" insertCoin=(action "insertCoin")}}
+    {{vending-machine-coin coinName="penny" imageLocation="/assets/penny.png" insertCoin=(action "insertCoin")}}
   </div>
 </div>
