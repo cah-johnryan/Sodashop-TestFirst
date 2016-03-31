@@ -11,7 +11,7 @@ TODO:
 - Invalid coins should register in the display, not the dispenser.
 - If there is not enough money inserted then the machine displays PRICE and the price of the item and subsequent checks of the display will display either INSERT COINS or the current amount as appropriate.  Show this through the display, not the dispenser.
 
-Soda Vending Machine Kata
+Kata objectives
 ====================
 
 In this exercise you will build a soda vending machine.  It will accept money, make change, maintain inventory, and dispense products.  All the things that you might expect a soda vending
