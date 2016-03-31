@@ -6,7 +6,7 @@ I've moved this further into a kata that Guy Royse introduced me to.
 https://github.com/guyroyse/vending-machine-kata
 
 TODO:
-====================
+------------
 - The dispenser should return change after a soda is selected.
 - Invalid coins should register in the display, not the dispenser.
 - If there is not enough money inserted then the machine displays PRICE and the price of the item and subsequent checks of the display will display either INSERT COINS or the current amount as appropriate.  Show this through the display, not the dispenser.
