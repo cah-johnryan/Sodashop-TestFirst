@@ -5,7 +5,7 @@ This repo is was originally based on the below blog. https://www.twilio.com/blog
 I've moved this further into a kata that Guy Royse introduced me to.
 https://github.com/guyroyse/vending-machine-kata
 
-TODO:
+TODO
 ------------
 - The dispenser should return change after a soda is selected.
 - Invalid coins should register in the display, not the dispenser.
