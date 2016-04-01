@@ -26,6 +26,7 @@ test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',
         .text(),
         'Sweet Corn Soda dispensed.  Thank you!',
         'the machine dispenses the product');
+      assert.ok($('.ember-notify:nth-child(2)').length === 0, 'No change is returned');
       assert.equal($('#vendingMachineDisplay>h4').text(), 'INSERT COIN',
         'the machine displays "INSERT COIN"');
     });
@@ -92,6 +93,7 @@ test('When selecting the last soda', function(assert) {
     assert.equal($('.ember-notify:nth-child(1) .md-list-item-text>span').text(),
       'Apple Pie Soda dispensed.  Thank you!',
       'the machine dispenses the product');
+    assert.ok($('.ember-notify:nth-child(2)').length === 0, 'No change is returned');
     assert.equal($('md-list-item:nth-child(1) h4').text(),
       'SOLD OUT', 'the product now states that it is sold out');
   });
