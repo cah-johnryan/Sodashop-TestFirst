@@ -35,16 +35,27 @@ export default Ember.Controller.extend({
         }
 
         function dispenseSoda() {
-          amountInserted -= sodaCost;
-          sodaBrandsController.set('amountInserted', amountInserted);
+          generateProductDispenseNotification(soda.get('image'), soda.get('name'));
           soda.set('quantity', --sodaQuantity);
           soda.save();
-          generateProductPurchasedNotification(soda.get('image'), soda.get(
-            'name'));
+          let amountRemaining = amountInserted - sodaCost;
+          generateReturnChangeNotification(amountRemaining);
+          sodaBrandsController.set('amountInserted', 0);
         }
 
-        function generateProductPurchasedNotification(productImage,
-          productName) {
+        function generateReturnChangeNotification(amountRemaining) {
+          let message = '<md-list-item>' +
+            '  <div class="md-list-item-inner">' +
+            '    <img alt="meh" class="md-avatar" src="/assets/penny.png"/>' +
+            '    <div class="md-list-item-text">' +
+            '      <span>$' + parseFloat(amountRemaining, 10).toFixed(2) + ' change</span>' +
+            '    </div>' +
+            '  </div>' +
+            '</md-list-item>';
+          sodaBrandsController.send('generateNotification', 'raw', message);
+        }
+
+        function generateProductDispenseNotification(productImage, productName) {
           let message = '<md-list-item>' +
             '  <div class="md-list-item-inner">' +
             '    <img alt="meh" class="md-avatar" src="' + productImage +

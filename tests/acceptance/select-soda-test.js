@@ -5,7 +5,7 @@ from 'qunit';
 import moduleForAcceptance from
   'sodashop-test-first/tests/helpers/module-for-acceptance';
 
-moduleForAcceptance('Acceptance | select product', {
+moduleForAcceptance('Acceptance | select soda', {
   beforeEach() {
       server.loadFixtures();
       andThen(function() {
@@ -22,7 +22,8 @@ test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',
     visit('/1/sodas');
     click('md-list-item:nth-child(5) button');
     andThen(function() {
-      assert.equal($('.message .md-list-item-text>span').text(),
+      assert.equal($('.ember-notify:nth-child(1) .md-list-item-text>span')
+        .text(),
         'Sweet Corn Soda dispensed.  Thank you!',
         'the machine dispenses the product');
       assert.equal($('#vendingMachineDisplay>h4').text(), 'INSERT COIN',
@@ -38,12 +39,16 @@ test('When selecting "Sweet Corn Soda" with $0.60 inserted into the machine',
     visit('/1/sodas');
     click('md-list-item:nth-child(5) button');
     andThen(function() {
-      assert.equal($('.message .md-list-item-text>span').text(),
+      assert.equal($('.ember-notify:nth-child(1) .md-list-item-text>span')
+        .text(),
         'Sweet Corn Soda dispensed.  Thank you!',
         'the machine dispenses the product');
-      assert.equal($('#vendingMachineDisplay>h4').text(),
-        '$0.10 INSERTED',
-        'the machine displays "$0.10 INSERTED"');
+      assert.equal($('.ember-notify:nth-child(2) .md-list-item-text>span')
+        .text(),
+        '$0.10 change',
+        'the machine returns $0.10 change');
+      assert.equal($('#vendingMachineDisplay>h4').text(), 'INSERT COIN',
+        'the machine displays "INSERT COIN"');
     });
   });
 
@@ -84,7 +89,7 @@ test('When selecting the last soda', function(assert) {
   visit('/2/sodas');
   click('md-list-item:nth-child(1) button');
   andThen(function() {
-    assert.equal($('.message .md-list-item-text>span').text(),
+    assert.equal($('.ember-notify:nth-child(1) .md-list-item-text>span').text(),
       'Apple Pie Soda dispensed.  Thank you!',
       'the machine dispenses the product');
     assert.equal($('md-list-item:nth-child(1) h4').text(),
