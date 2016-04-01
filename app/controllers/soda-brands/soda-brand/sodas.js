@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
         function generateReturnChangeNotification(amountRemaining) {
           let message = '<md-list-item>' +
             '  <div class="md-list-item-inner">' +
-            '    <img alt="meh" class="md-avatar" src="/assets/penny.png"/>' +
+            '    <img alt="meh" class="md-avatar" src="/assets/coin.png"/>' +
             '    <div class="md-list-item-text">' +
             '      <span>$' + parseFloat(amountRemaining, 10).toFixed(2) + ' change</span>' +
             '    </div>' +
