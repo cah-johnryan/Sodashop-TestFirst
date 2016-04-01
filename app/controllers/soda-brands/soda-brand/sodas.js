@@ -44,28 +44,25 @@ export default Ember.Controller.extend({
         }
 
         function generateReturnChangeNotification(amountRemaining) {
-          let message = '<md-list-item>' +
-            '  <div class="md-list-item-inner">' +
-            '    <img alt="meh" class="md-avatar" src="/assets/coin.png"/>' +
-            '    <div class="md-list-item-text">' +
-            '      <span>$' + parseFloat(amountRemaining, 10).toFixed(2) + ' change</span>' +
-            '    </div>' +
-            '  </div>' +
-            '</md-list-item>';
+          let message = generateCustomMessage('/assets/coin.png', '$' + parseFloat(amountRemaining, 10).toFixed(2) +
+            ' change');
           sodaBrandsController.send('generateNotification', 'raw', message);
         }
 
         function generateProductDispenseNotification(productImage, productName) {
-          let message = '<md-list-item>' +
+          let message = generateCustomMessage(productImage, productName + ' dispensed.  Thank you!');
+          sodaBrandsController.send('generateNotification', 'raw', message);
+        }
+
+        function generateCustomMessage(image, message) {
+          return '<md-list-item>' +
             '  <div class="md-list-item-inner">' +
-            '    <img alt="meh" class="md-avatar" src="' + productImage +
-            '"/>' +
+            '    <img alt="meh" class="md-avatar" src="' + image + '"/>' +
             '    <div class="md-list-item-text">' +
-            '      <span>' + productName + ' dispensed.  Thank you!</span>' +
+            '      <span>' + message + '</span>' +
             '    </div>' +
             '  </div>' +
             '</md-list-item>';
-          sodaBrandsController.send('generateNotification', 'raw', message);
         }
       },
       goToSoda(soda) {
