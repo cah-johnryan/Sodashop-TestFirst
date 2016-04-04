@@ -8,14 +8,19 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | title', {
   beforeEach() {
       server.loadFixtures();
-      andThen(function() {
-        visit('/');
-      });
     },
     afterEach() {}
 });
 
+test('the application should by default route to a listing of sodas', function(assert) {
+  visit('/');
+  andThen(function() {
+    assert.equal(currentURL(), '/1/sodas', 'routed to a listing for the 1st soda brand');
+  });
+});
+
 test('the title should state "Sodashop"', function(assert) {
+  visit('/');
   andThen(function() {
     assert.equal($('.title').text().split(" ")[0].trim(), 'Sodashop');
   });
