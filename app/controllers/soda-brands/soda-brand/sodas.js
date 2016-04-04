@@ -39,7 +39,9 @@ export default Ember.Controller.extend({
           soda.set('quantity', --sodaQuantity);
           soda.save();
           let amountRemaining = amountInserted - sodaCost;
-          if (amountRemaining !== 0) generateReturnChangeNotification(amountRemaining);
+          if (amountRemaining !== 0) {
+            generateReturnChangeNotification(amountRemaining);
+          }
           sodaBrandsController.set('amountInserted', 0);
         }
 
