@@ -1,20 +1,20 @@
 import Ember from 'ember';
+import ENV from 'sodashop-test-first/config/environment';
 
 export default Ember.Component.extend({
-  displayMessage: Ember.computed('amountInserted', 'temporaryDisplayMessage', function() {
-    let temporaryDisplayMessage = this.get('temporaryDisplayMessage');
-    if (temporaryDisplayMessage.length === 0) {
+  displayMessage: Ember.computed('amountInserted', 'alternateMessageToDisplay', function() {
+    let alternateMessageToDisplay = this.get('alternateMessageToDisplay');
+    if (alternateMessageToDisplay.length === 0) {
       let amountInserted = this.get('amountInserted');
       return (!amountInserted || amountInserted === 0) ? 'INSERT COIN' :
         '$' + amountInserted.toFixed(2) + ' INSERTED';
     } else {
-      return temporaryDisplayMessage;
+      return alternateMessageToDisplay;
     }
   }),
-  temporaryDisplayMessage: '',
+  alternateMessageToDisplay: '',
   actions: {
     insertCoin(coinName) {
-        this.set('temporaryDisplayMessage', '');
         let amount = 0;
         switch (coinName) {
           case 'quarter':
@@ -27,7 +27,7 @@ export default Ember.Component.extend({
             amount = 0.05;
             break;
           case 'penny':
-            this.set('temporaryDisplayMessage', 'INVALID COIN');
+            this.send('displayTemporaryMessage', 'INVALID COIN');
             break;
           default:
         }
@@ -35,6 +35,15 @@ export default Ember.Component.extend({
         currentAmountInserted += amount;
         this.set('amountInserted', currentAmountInserted);
       },
-      insertPenny() {}
+      displayTemporaryMessage(temporaryMessage) {
+        this.set('alternateMessageToDisplay', temporaryMessage);
+        let that = this;
+        let timeout = ENV.notificationCloseAfter;
+        if (timeout) {
+          Ember.run.later((function() {
+            that.set('alternateMessageToDisplay', '');
+          }), timeout);
+        }
+      }
   }
 });
