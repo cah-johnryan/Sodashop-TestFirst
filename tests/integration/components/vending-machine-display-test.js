@@ -18,8 +18,8 @@ test('it generates an error notification when a penny is selected', function(
 
   this.$('#penny').click();
 
-  assert.equal(this.get('temporaryDisplayMessage'), 'INVALID COIN',
-    'A temporary display message that an invalid coin has been inserted should appear (WHY WON\'T THIS WORK!!!!!!!!!!)'
+  assert.equal(this.$('#vendingMachineDisplay>h4').text(), 'INVALID COIN',
+    'A temporary display message that an invalid coin has been inserted should appear'
   );
 });
 
@@ -32,7 +32,7 @@ test('it updates the amount inserted appropriately when a quarter is inserted',
 
     this.$('#quarter').click();
 
-    assert.equal(this.get('amountInserted'), 0.50,
+    assert.equal(this.$('#vendingMachineDisplay>h4').text(), '$0.50 INSERTED',
       'the inserted amount should have increased by 25 cents');
   });
 
@@ -45,7 +45,7 @@ test('it updates the amount inserted appropriately when a dime is inserted',
 
     this.$('#dime').click();
 
-    assert.equal(this.get('amountInserted'), 0.35,
+    assert.equal(this.$('#vendingMachineDisplay>h4').text(), '$0.35 INSERTED',
       'the inserted amount should have increased by 10 cents');
   });
 
@@ -58,6 +58,6 @@ test('it updates the amount inserted appropriately when a nickel is inserted',
 
     this.$('#nickel').click();
 
-    assert.equal(this.get('amountInserted'), 0.30,
+    assert.equal(this.$('#vendingMachineDisplay>h4').text(), '$0.30 INSERTED',
       'the inserted amount should have increased by 5 cents');
   });
