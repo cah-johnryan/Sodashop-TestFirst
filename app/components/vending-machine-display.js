@@ -28,7 +28,7 @@ export default Ember.Component.extend({
             break;
           case 'penny':
             this.send('displayTemporaryMessage', 'INVALID COIN');
-            break;
+            return;
           default:
         }
         let currentAmountInserted = this.get('amountInserted');
