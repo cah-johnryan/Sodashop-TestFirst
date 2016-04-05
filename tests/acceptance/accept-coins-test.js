@@ -53,11 +53,8 @@ test('When a nickel is inserted', function(assert) {
 test('When a penny is inserted', function(assert) {
   click('#penny');
   andThen(function() {
-    assert.equal($('#vendingMachineDisplay>h4').text(), 'INSERT COIN',
-      'the machine displays "INSERT COIN"');
-    assert.equal($('.message').text(),
-      'This soda machine is not able to accept pennies',
-      'the machine shows an error message');
+    assert.equal($('#vendingMachineDisplay>h4').text(), 'INVALID COIN',
+      'the machine displays "INVALID COIN"');
   });
 });
 

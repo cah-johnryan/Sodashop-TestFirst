@@ -12,22 +12,15 @@ moduleForComponent('vending-machine-display',
 test('it generates an error notification when a penny is selected', function(
   assert) {
   this.set('amountInserted', 0.25);
-  this.set('generateNotification', (notificationType, message, options) => {
-    let expectedNotificationType = 'error';
-    let expectedMessage =
-      'This soda machine is not able to accept pennies';
-    assert.equal(notificationType, expectedNotificationType,
-      'the notification generated was not an error');
-    assert.equal(message, expectedMessage,
-      'the notification message was not appropriate to the error');
-    assert.equal(options, undefined,
-      'it should use the default notification options');
-  });
+  this.set('temporaryDisplayMessage', '');
+  this.set('generateNotification', () => {});
   this.render(hbs `{{vending-machine-display amountInserted=amountInserted generateNotification=(action generateNotification)}}`);
 
   this.$('#penny').click();
 
-  this.set('amountInserted', 0.25);
+  assert.equal(this.get('temporaryDisplayMessage'), 'INVALID COIN',
+    'A temporary display message that an invalid coin has been inserted should appear (WHY WON\'T THIS WORK!!!!!!!!!!)'
+  );
 });
 
 test('it updates the amount inserted appropriately when a quarter is inserted',
