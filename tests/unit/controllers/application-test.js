@@ -18,7 +18,7 @@ test('trying to return home (to the root of the application)', function(assert) 
   assert.expect(1);
   controller.send('returnToHome');
 
-  assert.ok(controller.transitionToRoute.calledWith('/'),
+  assert.ok(controller.transitionToRoute.calledWith('sodaBrands.sodaBrand.sodas', 1),
     'transitions back to the root of the application'
   );
 });

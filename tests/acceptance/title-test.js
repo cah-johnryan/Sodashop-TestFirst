@@ -12,6 +12,15 @@ moduleForAcceptance('Acceptance | title', {
     afterEach() {}
 });
 
+
+test('the application should by default route to a listing of sodas when clicking on the title', function(assert) {
+  visit('/2/sodas');
+  click('.title');
+  andThen(function() {
+    assert.equal(currentURL(), '/1/sodas', 'routed to a listing for the 1st soda brand');
+  });
+});
+
 test('the application should by default route to a listing of sodas', function(assert) {
   visit('/');
   andThen(function() {
