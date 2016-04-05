@@ -35,6 +35,7 @@ test('after logging in the option to logout is provided',
       assert.ok($('#logout').text().trim().length !== 0,
         'the logout button appears as a result');
       assert.equal($('.logout>span').text(), 'Welcome Test User');
+      assert.equal(currentURL(), '/1/sodas', 'routed to a listing for the 1st soda brand');
     });
   });
 

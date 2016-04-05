@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
         let sessionUserId = that.get('session.data.authenticated.userId');
         that.store.find('user', sessionUserId).then(function(user) {
           that.get('applicationController').set('model', user);
-          that.transitionToRoute('sodaBrands');
+          that.transitionToRoute('sodaBrands.sodaBrand.sodas', 1)
         });
       }
 
