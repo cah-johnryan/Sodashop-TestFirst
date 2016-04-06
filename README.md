@@ -37,7 +37,7 @@ Select Product
 --------------
 
 _As a vendor_  
-_I want customers to select sodas  
+_I want customers to select sodas_
 _So that I can give them an incentive to put money in the machine_  
 
 There are an assortment of sodas.  When the respective button is pressed and enough money has been inserted, the soda is dispensed and the machine displays THANK YOU.  If the display is checked again, it will display INSERT COINS and the current amount will be set to $0.00.  If there is not enough money inserted then the machine displays PRICE and the price of the soda and subsequent checks of the display will display either INSERT COINS or the current amount as appropriate.
@@ -63,7 +63,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4300](http://localhost:4300).
 
 ### Code Generators
 
