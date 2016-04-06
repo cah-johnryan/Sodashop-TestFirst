@@ -1,9 +1,9 @@
 {{#paper-card}}
   <img src="{{soda.image}}" alt="meh" class="sodaImage giveMeSpaceToBreathe"/>
   {{#paper-card-content}}
-    {{paper-input id="sodaEditName" label="Name" name=name value=soda.name}}
-    {{paper-input id="sodaEditCost" label="Cost" name=cost value=soda.cost}}
-    {{paper-input id="sodaEditQuantity" label="Quantity" name=quantity value=soda.quantity}}
+    {{paper-input id="sodaEditName" label="Name" name=name value=soda.name required=true}}
+    {{paper-input id="sodaEditCost" label="Cost" name=cost value=soda.cost customValidation=costValidation}}
+    {{paper-input id="sodaEditQuantity" label="Quantity" name=quantity value=soda.quantity customValidation=quantityValidation}}
     {{paper-input textarea=true id="sodaEditDescription" label="Description" name=description value=soda.description}}
   {{/paper-card-content}}
   <div class="md-actions" layout="row" layout-align="begin center">
