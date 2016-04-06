@@ -7,7 +7,6 @@ https://github.com/guyroyse/vending-machine-kata
 
 TODO
 ------------
-- Invalid coins should register in the display, not the dispenser.
 - If there is not enough money inserted then the machine displays PRICE and the price of the item and subsequent checks of the display will display either INSERT COINS or the current amount as appropriate.  Show this through the display, not the dispenser.
 
 Kata objectives
