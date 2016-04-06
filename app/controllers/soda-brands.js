@@ -8,24 +8,27 @@ export default Ember.Controller.extend({
   notificationCloseAfter: Config.notificationCloseAfter,
   amountInserted: 0,
   actions: {
-    generateNotification(notificationType, message, options) {
-      if (!options) {
-        options = {
-          closeAfter: this.get('notificationCloseAfter')
-        };
+    transitionToSodaBrand(sodaBrand) {
+        this.transitionToRoute('sodaBrands.sodaBrand.sodas', sodaBrand.id);
+      },
+      generateNotification(notificationType, message, options) {
+        if (!options) {
+          options = {
+            closeAfter: this.get('notificationCloseAfter')
+          };
+        }
+        let notify = this.get('notify');
+        if (notificationType === 'error') {
+          notify.error(message, options);
+        } else if (notificationType === 'warning') {
+          notify.warning(message, options);
+        } else if (notificationType === 'success') {
+          notify.success(message, options);
+        } else if (notificationType === 'raw') {
+          notify.success(window.$.extend(options, {
+            html: message
+          }));
+        }
       }
-      let notify = this.get('notify');
-      if (notificationType === 'error') {
-        notify.error(message, options);
-      } else if (notificationType === 'warning') {
-        notify.warning(message, options);
-      } else if (notificationType === 'success') {
-        notify.success(message, options);
-      } else if (notificationType === 'raw') {
-        notify.success(window.$.extend(options, {
-          html: message
-        }));
-      }
-    }
   }
 });

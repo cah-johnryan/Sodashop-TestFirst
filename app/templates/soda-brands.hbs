@@ -1,5 +1,5 @@
 {{vending-machine-display amountInserted=amountInserted generateNotification=(action "generateNotification")}}
-{{soda-shop-toolbar sodaBrands=model}}
+{{soda-shop-toolbar transitionToSodaBrandController=(action "transitionToSodaBrand") sodaBrands=model}}
 {{#if applicationModel.hasManagementPrivileges}}
   <div>
     {{#link-to "sodaBrands.create" id="createSodaBrandLink"}}{{paper-icon "add-circle" size=1}}{{/link-to}}

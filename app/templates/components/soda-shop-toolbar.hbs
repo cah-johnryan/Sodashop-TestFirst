@@ -1,7 +1,7 @@
 {{#paper-toolbar}}
   <div class="md-toolbar-tools">
     {{#each sodaBrands as |sodaBrand|}}
-      {{#paper-button}}
+      {{#paper-button param=sodaBrand action="transitionToSodaBrand" target=component}}
         {{#link-to "sodaBrands.sodaBrand.sodas" sodaBrand.id}}
           <span>{{sodaBrand.name}}</span>
         {{/link-to}}
