@@ -13,14 +13,14 @@ test('it generates an error notification when a penny is selected', function(
   assert) {
   this.set('amountInserted', 0.25);
   this.set('alternateMessageToDisplay', '');
-  this.set('generateNotification', () => {});
-  this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
+
+  this.set('displayTemporaryMessage', (message) => {
+    assert.equal(message, 'INVALID COIN');
+  });
+
+  this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
   this.$('#penny').click();
-
-  assert.equal(this.$('#vendingMachineDisplay>h4').text(), 'INVALID COIN',
-    'A temporary display message that an invalid coin has been inserted should appear'
-  );
 });
 
 test('it updates the amount inserted appropriately when a quarter is inserted',
@@ -29,7 +29,8 @@ test('it updates the amount inserted appropriately when a quarter is inserted',
     this.set('amountInserted', 0.25);
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
+    this.set('displayTemporaryMessage', () => {});
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#quarter').click();
 
@@ -43,7 +44,8 @@ test('it updates the amount inserted appropriately when a dime is inserted',
     this.set('amountInserted', 0.25);
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
+    this.set('displayTemporaryMessage', () => {});
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#dime').click();
 
@@ -52,12 +54,12 @@ test('it updates the amount inserted appropriately when a dime is inserted',
   });
 
 test('it updates the amount inserted appropriately when a nickel is inserted',
-  function(
-    assert) {
+  function(assert) {
     this.set('amountInserted', 0.25);
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
+    this.set('displayTemporaryMessage', () => {});
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#nickel').click();
 

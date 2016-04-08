@@ -1,5 +1,5 @@
 import {
-  skip, test
+  test
 }
 from 'qunit';
 import moduleForAcceptance from
@@ -53,7 +53,7 @@ test('When selecting "Sweet Corn Soda" with $0.60 inserted into the machine',
     });
   });
 
-skip('When selecting "Sweet Corn Soda" when not enough money is inserted',
+test('When selecting "Sweet Corn Soda" when not enough money is inserted',
   function(assert) {
     click('#quarter');
     visit('/1/sodas');

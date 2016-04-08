@@ -28,10 +28,7 @@ export default Ember.Controller.extend({
         }
 
         function notEnoughMoneyInserted() {
-          sodaBrandsController.send('generateNotification', 'warning',
-            'Not enough money has been inserted.  ' +
-            'The price for ' + soda.get('name') + ' is ' +
-            soda.get('formattedPriceDollars') + '.');
+          sodaBrandsController.send('displayTemporaryMessage', 'PRICE ' + soda.get('formattedPriceDollars'));
         }
 
         function dispenseSoda() {

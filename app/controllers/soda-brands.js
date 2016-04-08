@@ -30,6 +30,16 @@ export default Ember.Controller.extend({
             html: message
           }));
         }
+      },
+      displayTemporaryMessage(temporaryMessage) {
+        this.set('alternateMessageToDisplay', temporaryMessage);
+        let that = this;
+        let timeout = Config.notificationCloseAfter;
+        if (timeout) {
+          Ember.run.later((function() {
+            that.set('alternateMessageToDisplay', '');
+          }), timeout);
+        }
       }
   }
 });
