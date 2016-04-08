@@ -1,4 +1,4 @@
-{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage="displayTemporaryMessage"}}
+{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}
 {{soda-shop-toolbar transitionToSodaBrandController=(action "transitionToSodaBrand") sodaBrands=model}}
 {{#if applicationModel.hasManagementPrivileges}}
   <div>
