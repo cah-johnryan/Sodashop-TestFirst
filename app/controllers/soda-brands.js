@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   notify: Ember.inject.service('notify'),
   notificationCloseAfter: Config.notificationCloseAfter,
   amountInserted: 0,
+  alternateMessageToDisplay: '',
   actions: {
     transitionToSodaBrand(sodaBrand) {
         this.transitionToRoute('sodaBrands.sodaBrand.sodas', sodaBrand.id);

@@ -12,7 +12,6 @@ export default Ember.Component.extend({
       return alternateMessageToDisplay;
     }
   }),
-  alternateMessageToDisplay: '',
   actions: {
     insertCoin(coinName) {
         let amount = 0;

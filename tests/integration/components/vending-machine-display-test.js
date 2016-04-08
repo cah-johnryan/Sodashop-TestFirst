@@ -12,9 +12,9 @@ moduleForComponent('vending-machine-display',
 test('it generates an error notification when a penny is selected', function(
   assert) {
   this.set('amountInserted', 0.25);
-  this.set('temporaryDisplayMessage', '');
+  this.set('alternateMessageToDisplay', '');
   this.set('generateNotification', () => {});
-  this.render(hbs `{{vending-machine-display amountInserted=amountInserted generateNotification=(action generateNotification)}}`);
+  this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
 
   this.$('#penny').click();
 
@@ -27,8 +27,9 @@ test('it updates the amount inserted appropriately when a quarter is inserted',
   function(
     assert) {
     this.set('amountInserted', 0.25);
+    this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted generateNotification=(action generateNotification)}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
 
     this.$('#quarter').click();
 
@@ -40,8 +41,9 @@ test('it updates the amount inserted appropriately when a dime is inserted',
   function(
     assert) {
     this.set('amountInserted', 0.25);
+    this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted generateNotification=(action generateNotification)}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
 
     this.$('#dime').click();
 
@@ -53,8 +55,9 @@ test('it updates the amount inserted appropriately when a nickel is inserted',
   function(
     assert) {
     this.set('amountInserted', 0.25);
+    this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted generateNotification=(action generateNotification)}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay generateNotification=(action generateNotification)}}`);
 
     this.$('#nickel').click();
 
