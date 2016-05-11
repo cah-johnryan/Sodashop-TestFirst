@@ -23,8 +23,7 @@ export default Ember.Controller.extend({
         }
 
         function soldOut() {
-          sodaBrandsController.send('generateNotification', 'error',
-            'This soda is sold out.  Please select another soda.');
+          sodaBrandsController.send('displayTemporaryMessage', 'SOLD OUT');
         }
 
         function notEnoughMoneyInserted() {

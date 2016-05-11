@@ -70,13 +70,8 @@ test('When selecting a soda that is sold out', function(assert) {
   visit('/1/sodas');
   click('md-list-item:nth-child(7) button');
   andThen(function() {
-    assert.equal($('.message').text(),
-      'This soda is sold out.  Please select another soda.',
-      'the machine displays a message stating that the soda is sold out.'
-    );
-    assert.equal($('#vendingMachineDisplay>h4').text(),
-      '$0.25 INSERTED',
-      'the machine displays "$0.25 INSERTED"');
+    assert.equal($('#vendingMachineDisplay>h4').text(), 'SOLD OUT',
+      'the machine displays "SOLD OUT"');
   });
 });
 
