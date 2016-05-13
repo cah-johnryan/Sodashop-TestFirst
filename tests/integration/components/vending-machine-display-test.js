@@ -18,7 +18,7 @@ test('it generates an error notification when a penny is selected', function(
     assert.equal(message, 'INVALID COIN');
   });
 
-  this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}`);
+  this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
   this.$('#penny').click();
 });
@@ -30,7 +30,7 @@ test('it updates the amount inserted appropriately when a quarter is inserted',
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
     this.set('displayTemporaryMessage', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#quarter').click();
 
@@ -45,7 +45,7 @@ test('it updates the amount inserted appropriately when a dime is inserted',
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
     this.set('displayTemporaryMessage', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#dime').click();
 
@@ -59,7 +59,7 @@ test('it updates the amount inserted appropriately when a nickel is inserted',
     this.set('alternateMessageToDisplay', '');
     this.set('generateNotification', () => {});
     this.set('displayTemporaryMessage', () => {});
-    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}`);
+    this.render(hbs `{{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action displayTemporaryMessage)}}`);
 
     this.$('#nickel').click();
 
