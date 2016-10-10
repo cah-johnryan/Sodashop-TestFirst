@@ -25,9 +25,15 @@
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
     "ember-cli-dependency-checker": "^1.2.0",
+    "ember-cli-deploy": "1.0.0-beta.1",
+    "ember-cli-deploy-build": "0.1.1",
+    "ember-cli-deploy-gzip": "0.2.3",
+    "ember-cli-deploy-manifest": "0.1.1",
+    "ember-cli-deploy-s3": "0.3.2",
     "ember-cli-file-picker": "0.0.9",
     "ember-cli-htmlbars": "^1.0.3",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-ic-ajax": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-mirage": "0.1.13",
     "ember-cli-qunit": "^1.4.0",
@@ -41,9 +47,10 @@
     "ember-notify": "5.0.2",
     "ember-paper": "0.2.12",
     "ember-resolver": "^2.0.3",
-    "ember-simple-auth": "1.0.1",
+    "ember-simple-auth": "^1.1.0",
     "ember-sinon": "0.5.0",
     "emberfire": "1.6.6",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.1",
+    "torii": "^0.8.0"
   }
 }
