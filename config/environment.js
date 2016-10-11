@@ -25,12 +25,12 @@ module.exports = function(environment) {
     }
   };
 
-  ENV.torii = {
-    providers: {
-      'facebook-oauth2': {
-        apiKey: '183098028744343'
-      }
-    }
+  ENV.s3 = {
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET,
+    bucket: process.env.AWS_BUCKET,
+    region: process.env.AWS_REGION,
+    filePattern: "*"
   };
 
   if (environment === 'development') {
@@ -44,6 +44,15 @@ module.exports = function(environment) {
       enabled: true
     };
     ENV.notificationCloseAfter = 2500;
+
+    ENV.torii = {
+      providers: {
+        'facebook-oauth2': {
+          apiKey: '183157865405026',
+          redirectUri: 'http://localhost:4300'
+        }
+      }
+    };
   }
 
   if (environment === 'test') {
@@ -67,6 +76,15 @@ module.exports = function(environment) {
       enabled: false
     };
     ENV.notificationCloseAfter = 2500;
+
+    ENV.torii = {
+      providers: {
+        'facebook-oauth2': {
+          apiKey: '183098028744343',
+          redirectUri: 'http://localhost:4300'
+        }
+      }
+    };
   }
 
   return ENV;
