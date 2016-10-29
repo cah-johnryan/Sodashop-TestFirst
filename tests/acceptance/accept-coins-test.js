@@ -7,12 +7,15 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | accept coins', {
   beforeEach() {
-      server.loadFixtures();
-      andThen(function() {
-        visit('/');
-      });
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#logout').length !== 0)) {
+        click('#logout');
+      }
+      visit('/');
+    });
+  },
+  afterEach() {}
 });
 
 test('When there are no coins inserted',

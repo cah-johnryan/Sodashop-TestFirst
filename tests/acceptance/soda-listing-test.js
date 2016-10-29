@@ -8,6 +8,11 @@ import moduleForAcceptance from
 moduleForAcceptance('Acceptance | soda listing', {
   beforeEach() {
       server.loadFixtures();
+      andThen(function() {
+        if (($('#logout').length !== 0)) {
+          click('#logout');
+        }
+      });
     },
     afterEach() {}
 });

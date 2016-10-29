@@ -7,12 +7,15 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | select soda', {
   beforeEach() {
-      server.loadFixtures();
-      andThen(function() {
-        visit('/');
-      });
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#logout').length !== 0)) {
+        click('#logout');
+      }
+      visit('/');
+    });
+  },
+  afterEach() {}
 });
 
 test('When selecting "Sweet Corn Soda" with $0.50 inserted into the machine',

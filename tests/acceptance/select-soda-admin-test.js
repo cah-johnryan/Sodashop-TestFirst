@@ -7,16 +7,15 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | select soda admin', {
   beforeEach() {
-      server.loadFixtures();
-      visit('/login');
-      fillIn('#identification input', 'testAdmin');
-      fillIn('#password input', 'testPassword');
-      click('#authenticate');
-      andThen(function() {
-        visit('/');
-      });
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#login').length !== 0)) {
+        click('#login');
+      }
+      visit('/');
+    });
+  },
+  afterEach() {}
 });
 
 test('When updating the quantity of a soda that is sold out', function(assert) {

@@ -7,13 +7,14 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | soda listing admin', {
   beforeEach() {
-      server.loadFixtures();
-      visit('/login');
-      fillIn('#identification input', 'testAdmin');
-      fillIn('#password input', 'testPassword');
-      click('#authenticate');
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#login').length !== 0)) {
+        click('#login');
+      }
+    });
+  },
+  afterEach() {}
 });
 
 test('the create soda icon is present', function(assert) {

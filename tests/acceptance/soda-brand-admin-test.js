@@ -7,16 +7,15 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | soda brand admin', {
   beforeEach() {
-      server.loadFixtures();
-      visit('/login');
-      fillIn('#identification input', 'testAdmin');
-      fillIn('#password input', 'testPassword');
-      click('#authenticate');
-      andThen(function() {
-        visit('/');
-      });
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#login').length !== 0)) {
+        click('#login');
+      }
+      visit('/');
+    });
+  },
+  afterEach() {}
 });
 
 test('the create soda brands icon is present', function(assert) {

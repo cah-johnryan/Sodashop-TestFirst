@@ -7,9 +7,14 @@ import moduleForAcceptance from
 
 moduleForAcceptance('Acceptance | soda brand', {
   beforeEach() {
-      server.loadFixtures();
-    },
-    afterEach() {}
+    server.loadFixtures();
+    andThen(function() {
+      if (($('#logout').length !== 0)) {
+        click('#logout');
+      }
+    });
+  },
+  afterEach() {}
 });
 
 test('the create soda brands icon is not present', function(assert) {
@@ -31,15 +36,9 @@ test('when trying to create a soda and and not having logged in',
 
 test('when trying to create a soda and not having the appropriate privileges',
   function(assert) {
-    visit('/login');
-    fillIn('#identification input', 'testUser');
-    fillIn('#password input', 'testPassword');
-    click('#authenticate');
+    visit('/create');
     andThen(function() {
-      visit('/create');
-      andThen(function() {
-        assert.equal(currentURL(), '/pageNotAvailable');
-      });
+      assert.equal(currentURL(), '/pageNotAvailable');
     });
   }
 );

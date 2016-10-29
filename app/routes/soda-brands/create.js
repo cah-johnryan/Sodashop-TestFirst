@@ -7,7 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   beforeModel() {
     let authorizationCode = this.get('session.data.authenticated.authorizationCode');
     if (!authorizationCode) {
-      that.transitionTo('pageNotAvailable');
+      this.transitionTo('pageNotAvailable');
     }
   }
 });
