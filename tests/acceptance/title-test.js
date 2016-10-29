@@ -28,9 +28,9 @@ test('the application should by default route to a listing of sodas', function(a
   });
 });
 
-test('the title should state "Sodashop"', function(assert) {
+test('the title should state "Soda Shop"', function(assert) {
   visit('/');
   andThen(function() {
-    assert.equal($('.title').text().split(" ")[0].trim(), 'Sodashop');
+    assert.equal($('.title').text().substring(0,9), 'Soda Shop');
   });
 });

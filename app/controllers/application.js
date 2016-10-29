@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
@@ -8,12 +9,18 @@ export default Ember.Controller.extend({
     },
     authenticateWithFacebook() {
       var that = this;
-      this.get('session').authenticate('authenticator:torii', 'facebook').then(function() {
-        let authorizationCode = that.get('session.data.authenticated.authorizationCode');
-        that.set('model', {
-          'authorizationCode': authorizationCode
+      if (config.environment === 'test') {
+        this.set('model', {
+          'authorizationCode': 'dummyValue'
         });
-      });
+      } else {
+        this.get('session').authenticate('authenticator:torii', 'facebook').then(function() {
+          let authorizationCode = that.get('session.data.authenticated.authorizationCode');
+          that.set('model', {
+            'authorizationCode': authorizationCode
+          });
+        });
+      }
     },
     invalidateSession() {
       this.get('session').invalidate();
