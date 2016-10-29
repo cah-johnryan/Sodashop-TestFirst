@@ -3,5 +3,5 @@
   {{soda-details-editable soda=model.soda returnToSodaListing=(action "returnToSodaListing")}}
 {{else}}
   <h3>Soda details:</h3>
-  {{soda-details soda=model.soda hasManagementPrivileges=applicationModel.hasManagementPrivileges cancelViewDetails=(action "returnToSodaListing") beginEditSoda=(action "beginEditSoda")}}
+  {{soda-details soda=model.soda authorizationCode=applicationModel.authorizationCode cancelViewDetails=(action "returnToSodaListing") beginEditSoda=(action "beginEditSoda")}}
 {{/if}}
