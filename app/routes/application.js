@@ -8,11 +8,15 @@ export default Ember.Route.extend({
     }
   },
   model() {
-    let sessionUserId = this.get('session.data.authenticated.userId');
-    if (sessionUserId) {
-      return this.store.find('user', sessionUserId);
+    let authorizationCode = this.get('session.data.authenticated.authorizationCode');
+    if (authorizationCode) {
+      return {
+        'authorizationCode': authorizationCode
+      };
     } else {
-      return {};
+      return {
+        'authorizationCode': null
+      };
     }
   }
 });

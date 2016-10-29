@@ -4,11 +4,19 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'sodashop-test-first',
     environment: environment,
-    firebase: 'https://sodashopjohnryan.firebaseio.com/',
+    firebase: {
+      apiKey: "AIzaSyAzxn5YGbEjVNwGQSNg-hrO7ReZnqXKLMs",
+      authDomain: "sodashop-nenaner-9d100.firebaseapp.com",
+      databaseURL: "https://sodashop-nenaner-9d100.firebaseio.com",
+      storageBucket: "sodashop-nenaner-9d100.appspot.com",
+      messagingSenderId: "845392190197"
+    },
     contentSecurityPolicy: {
-      'img-src': "'self' data:",
+      'img-src': "'self' 'unsafe-eval' apis.google.com",
       'style-src': "'self' 'unsafe-inline'",
-      'font-src': "'self' https://fonts.gstatic.com"
+      'font-src': "'self' https://fonts.gstatic.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
     },
     baseURL: '/',
     locationType: 'auto',

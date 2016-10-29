@@ -2,12 +2,11 @@
   <div class="title giveMeSpaceToBreathe" {{action "returnToHome"}}>Sodashop</div>
   {{#if session.isAuthenticated}}
   <div class="logout">
-    <span>Welcome {{model.fullName}}</span>
     {{#paper-button id='logout' raised=true action='invalidateSession'}}Logout{{/paper-button}}
   </div>
   {{else}}
   <div class="login">
-    {{#paper-button id='login' raised=true action='login'}}Login{{/paper-button}}
+    {{#paper-button id='login' raised=true action='authenticateWithFacebook'}}Login{{/paper-button}}
   </div>
   {{/if}}
 </div>

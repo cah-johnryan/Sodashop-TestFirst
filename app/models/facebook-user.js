@@ -1,11 +1,6 @@
-import Model from 'ember-data/model';
+import DS from 'ember-data';
+import Ember from 'ember';
 
-export default Model.extend({
-  authorizationCode: DS.attr('string'),
-  email: DS.attr('string'),
-  firstName: DS.attr('string'),
-  lastName: DS.attr('string'),
-  fullName: Ember.computed('firstName', 'lastName', function() {
-    return this.get('firstName') + ' ' + this.get('lastName');
-  })
+export default DS.Model.extend({
+  authorizationCode: DS.attr('string')
 });

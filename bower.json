@@ -10,7 +10,7 @@
     "pretender": "~0.10.1",
     "lodash": "~3.7.0",
     "Faker": "~3.0.0",
-    "firebase": "^2.1.0",
+    "firebase": "^3.0.0",
     "ember-simple-auth": "0.8.0"
   }
 }

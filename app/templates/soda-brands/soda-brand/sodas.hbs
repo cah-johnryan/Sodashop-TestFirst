@@ -1,6 +1,6 @@
 {{outlet}}
 <h3 class="sodaListingHeader">Soda listing for <span id="sodaBrandName">{{sodaBrandModel.sodaBrand.name}}</span>:</h3>
-{{#if applicationModel.hasManagementPrivileges}}
+{{#if applicationModel.authorizationCode}}
   {{#link-to "sodaBrands.sodaBrand.sodas.create" id="createSodaLink"}}{{paper-icon "add-circle" size=1}}{{/link-to}}
 {{/if}}
 {{#paper-content class="md-whiteframe-z1 list-demo"}}

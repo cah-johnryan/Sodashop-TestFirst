@@ -6,7 +6,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('login');
   this.route('sodaBrands', {
     path: '/'
   }, function() {
@@ -22,7 +21,6 @@ Router.map(function() {
     });
     this.route('create');
   });
-  this.route('pqgeNotAvailable');
   this.route('pageNotAvailable');
 });
 

@@ -1,6 +1,6 @@
 {{vending-machine-display amountInserted=amountInserted alternateMessageToDisplay=alternateMessageToDisplay displayTemporaryMessage=(action "displayTemporaryMessage")}}
 {{soda-shop-toolbar transitionToSodaBrandController=(action "transitionToSodaBrand") sodaBrands=model}}
-{{#if applicationModel.hasManagementPrivileges}}
+{{#if applicationModel.authorizationCode}}
   <div>
     {{#link-to "sodaBrands.create" id="createSodaBrandLink"}}{{paper-icon "add-circle" size=1}}{{/link-to}}
   </div>
