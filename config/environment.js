@@ -68,6 +68,10 @@ module.exports = function(environment) {
     ENV.baseURL = '/';
     ENV.locationType = 'none';
 
+    ENV['simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
+
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;

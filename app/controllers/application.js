@@ -9,18 +9,12 @@ export default Ember.Controller.extend({
     },
     authenticateWithFacebook() {
       var that = this;
-      if (config.environment === 'test') {
-        this.set('model', {
-          'authorizationCode': 'dummyValue'
+      this.get('session').authenticate('authenticator:torii', 'facebook').then(function() {
+        let authorizationCode = that.get('session.data.authenticated.authorizationCode');
+        that.set('model', {
+          'authorizationCode': authorizationCode
         });
-      } else {
-        this.get('session').authenticate('authenticator:torii', 'facebook').then(function() {
-          let authorizationCode = that.get('session.data.authenticated.authorizationCode');
-          that.set('model', {
-            'authorizationCode': authorizationCode
-          });
-        });
-      }
+      });
     },
     invalidateSession() {
       this.get('session').invalidate();
