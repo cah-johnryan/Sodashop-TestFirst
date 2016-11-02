@@ -93,7 +93,7 @@ module.exports = function(environment) {
       providers: {
         'facebook-oauth2': {
           apiKey: '183098028744343',
-          redirectUri: 'http://localhost:4300'
+          redirectUri: 'http://sodashop.nenaner.com'
         }
       }
     };
