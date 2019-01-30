@@ -10,16 +10,16 @@
 
     {{content-for "head"}}
 
-    <link rel="stylesheet" href="./assets/vendor.css" integrity="">
-    <link rel="stylesheet" href="./assets/sodashop-test-first.css" integrity="">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/my-app.css">
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
 
-    <script src="./assets/vendor.js"></script>
-    <script src="./assets/sodashop-test-first.js"></script>
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/my-app.js"></script>
 
     {{content-for "body-footer"}}
   </body>
