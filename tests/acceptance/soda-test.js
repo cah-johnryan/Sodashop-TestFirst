@@ -1,45 +1,36 @@
-import {
-  test
-}
-from 'qunit';
-import moduleForAcceptance from
-  'sodashop-test-first/tests/helpers/module-for-acceptance';
+import {module, test} from 'qunit';
+import {setupApplicationTest} from 'ember-qunit';
+import {click, currentURL, visit} from '@ember/test-helpers';
+import $ from 'jquery';
 
-moduleForAcceptance('Acceptance | soda', {
-  beforeEach() {
-      server.loadFixtures();
-      andThen(function() {
-        if (($('#logout').length !== 0)) {
-          click('#logout');
-        }
-      });
-    },
-    afterEach() {}
-});
+module('Acceptance | soda', function (hooks) {
+  setupApplicationTest(hooks);
 
-test('when trying to create a soda and not having logged in',
-  function(assert) {
-    visit('/1/sodas/create');
-    andThen(function() {
-      assert.equal(currentURL(), '/login',
-        'you are directed to the login screen');
-    });
+  hooks.beforeEach(async function () {
+    if (($('#logout').length !== 0)) {
+      click('#logout');
+    }
   });
 
-test('when trying to create a soda and not having the appropriate privileges',
-  function(assert) {
-    visit('/1/sodas/create');
-    andThen(function() {
-      assert.equal(currentURL(), '/pageNotAvailable',
-        'you are directed to the page not available screen');
-    });
+  test('when trying to create a soda and not having logged in', async function (assert) {
+    await visit('/1/sodas/create');
+    assert.equal(currentURL(), '/login',
+      'you are directed to the login screen');
   });
 
-test('When updating the quantity of a soda that is sold out', function(assert) {
+  test('when trying to create a soda and not having the appropriate privileges', async function (assert) {
+    await visit('/1/sodas/create');
+    assert.equal(currentURL(), '/pageNotAvailable',
+      'you are directed to the page not available screen');
+  });
+
+  test('When updating the quantity of a soda that is sold out', async function (assert) {
     visit('/1/sodas');
-    click('md-list-item:nth-child(7) a');
-    andThen(function() {
-      assert.ok($('button[action="beginEditSoda"]').length === 0);
-      assert.ok($('button[action="updateSoda"]').length === 0);
-    });
+    await click('md-list-item:nth-child(7) a');
+    assert.ok($('button[action="beginEditSoda"]').length === 0);
+    assert.ok($('button[action="updateSoda"]').length === 0);
+  });
+
 });
+
+

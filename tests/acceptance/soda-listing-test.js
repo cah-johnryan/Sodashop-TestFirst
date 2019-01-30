@@ -1,33 +1,25 @@
-import {
-  test
-}
-from 'qunit';
-import moduleForAcceptance from
-  'sodashop-test-first/tests/helpers/module-for-acceptance';
+import {module, test} from 'qunit';
+import {setupApplicationTest} from 'ember-qunit';
+import {click, visit} from '@ember/test-helpers';
+import $ from 'jquery';
 
-moduleForAcceptance('Acceptance | soda listing', {
-  beforeEach() {
-      server.loadFixtures();
-      andThen(function() {
-        if (($('#logout').length !== 0)) {
-          click('#logout');
-        }
-      });
-    },
-    afterEach() {}
-});
+module('Acceptance | soda listing', function (hooks) {
+  setupApplicationTest(hooks);
 
-test('the create soda icon is not present', function(assert) {
-  visit('/1/sodas');
-  andThen(function() {
+  hooks.beforeEach(async function () {
+    if (($('#logout').length !== 0)) {
+      click('#logout');
+    }
+  });
+
+  test('the create soda icon is not present', async function (assert) {
+    await visit('/1/sodas');
     assert.equal($('#createSodaLink').is(":visible"), false,
       'the icon is not present');
   });
-});
 
-test('visiting the soda listing for "Lesters Fixins"', function(assert) {
-  visit('/1/sodas');
-  andThen(function() {
+  test('visiting the soda listing for "Lesters Fixins"', async function (assert) {
+    await visit('/1/sodas');
     assert.equal($('md-list-item').length, 8,
       "exactly eight items are displayed");
 

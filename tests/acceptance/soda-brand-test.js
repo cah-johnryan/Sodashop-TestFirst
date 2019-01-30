@@ -1,44 +1,33 @@
-import {
-  test
-}
-from 'qunit';
-import moduleForAcceptance from
-  'sodashop-test-first/tests/helpers/module-for-acceptance';
+import {module, test} from 'qunit';
+import {setupApplicationTest} from 'ember-qunit';
+import {click, currentURL, visit} from '@ember/test-helpers';
+import $ from 'jquery';
 
-moduleForAcceptance('Acceptance | soda brand', {
-  beforeEach() {
-    server.loadFixtures();
-    andThen(function() {
-      if (($('#logout').length !== 0)) {
-        click('#logout');
-      }
-    });
-  },
-  afterEach() {}
-});
+module('Acceptance | soda brand', function (hooks) {
+  setupApplicationTest(hooks);
 
-test('the create soda brands icon is not present', function(assert) {
-  visit('/1/sodas');
-  andThen(function() {
+  hooks.beforeEach(async function () {
+    if (($('#logout').length !== 0)) {
+      click('#logout');
+    }
+  });
+
+  test('the create soda brands icon is not present', async function (assert) {
+    await visit('/1/sodas');
     assert.equal($('#createSodaBrandLink').is(":visible"), false,
       'the icon is not present');
   });
-});
 
-test('when trying to create a soda and and not having logged in',
-  function(assert) {
-    visit('/create');
-    andThen(function() {
+  test('when trying to create a soda and and not having logged in', async function (assert) {
+      await visit('/create');
       assert.equal(currentURL(), '/login');
-    });
-  }
-);
+    }
+  );
 
-test('when trying to create a soda and not having the appropriate privileges',
-  function(assert) {
-    visit('/create');
-    andThen(function() {
+  test('when trying to create a soda and not having the appropriate privileges', async function (assert) {
+      await visit('/create');
       assert.equal(currentURL(), '/pageNotAvailable');
-    });
-  }
-);
+    }
+  );
+
+});

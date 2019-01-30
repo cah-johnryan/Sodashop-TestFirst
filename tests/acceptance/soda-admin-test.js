@@ -1,51 +1,42 @@
-import {
-  skip, test
-}
-from 'qunit';
-import moduleForAcceptance from
-  'sodashop-test-first/tests/helpers/module-for-acceptance';
+import {module, skip, test} from 'qunit';
+import {setupApplicationTest} from 'ember-qunit';
+import {click, fillIn, visit, currentURL} from '@ember/test-helpers';
+import $ from 'jquery';
 
-moduleForAcceptance('Acceptance | soda admin', {
-  beforeEach() {
-    server.loadFixtures();
-    visit('/1/sodas');
-    andThen(function() {
-      if (($('#login').length !== 0)) {
-        click('#login');
-      }
-    });
-  },
-  afterEach() {}
-});
+module('Acceptance | soda admin', function (hooks) {
+  setupApplicationTest(hooks);
 
-test('when viewing soda details', function(assert) {
-  click('md-list-item:nth-child(1) a');
-  click('button[action="cancelViewDetails"]');
-  andThen(function() {
+  hooks.beforeEach(async function () {
+    await visit('/1/sodas');
+    if (($('#login').length !== 0)) {
+      click('#login');
+    }
+  });
+
+  test('when viewing soda details', async function (assert) {
+    click('md-list-item:nth-child(1) a');
+    await click('button[action="cancelViewDetails"]');
     assert.equal(currentURL(), '/1/sodas',
       'the cancel button takes me back to the soda listing');
   });
-});
 
-skip('when creating a soda (mirage issue)',
-  // This fails in mirage as for some reason the sodas model does not autoupdate on save.
-  // manually verified that this feature function once I integrated firebase.
-  function(assert) {
+  skip('when creating a soda (mirage issue)', async function (assert) {
+    // This fails in mirage as for some reason the sodas model does not autoupdate on save.
+    // manually verified that this feature function once I integrated firebase.
+
     assert.expect(1);
     click('#createSodaLink');
     fillIn('#sodaNameInput input', 'My new soda');
-    click('#createSoda');
-    andThen(function() {
-      assert.ok($('h3:contains("My new soda")').length > 0,
-        'it displays "My new soda"');
-    });
+    await click('#createSoda');
+    assert.ok($('h3:contains("My new soda")').length > 0,
+      'it displays "My new soda"');
   });
 
-// TODO: !!! Mirage won't maintain the updated values on the redirect !!!
-skip('when editing on a soda in the listing (mirage issue)', function(assert) {
-  click('md-list-item:nth-child(1) a');
-  click('button[action="beginEditSoda"]');
-  andThen(function() {
+  skip('when editing on a soda in the listing (mirage issue)', async function (assert) {
+    // TODO: !!! Mirage won't maintain the updated values on the redirect !!!
+
+    click('md-list-item:nth-child(1) a');
+    await click('button[action="beginEditSoda"]');
     assert.ok($('#sodaEditName input').val(),
       'Bacon Soda with Chocolate',
       'the name is displayed'
@@ -65,23 +56,21 @@ skip('when editing on a soda in the listing (mirage issue)', function(assert) {
     fillIn('#sodaEditQuantity input', '0');
     fillIn('#sodaEditDescription input',
       'New edited soda description');
-    click('button[action="updateSoda"]');
-    andThen(function() {
-      assert.ok($('h3:contains("New edited soda name")')
+    await click('button[action="updateSoda"]');
+    assert.ok($('h3:contains("New edited soda name")')
         .length >
-        0,
-        'the name changes properly to "New edited soda name"'
-      );
-      assert.equal($('md-list-item:nth-child(1) h4').text(),
-        'SOLD OUT',
-        'the product now states that it is sold out');
-      assert.ok($(
-          'p:contains("New edited soda description")'
-        )
+      0,
+      'the name changes properly to "New edited soda name"'
+    );
+    assert.equal($('md-list-item:nth-child(1) h4').text(),
+      'SOLD OUT',
+      'the product now states that it is sold out');
+    assert.ok($(
+      'p:contains("New edited soda description")'
+      )
         .length >
-        0,
-        'the description changes properly to "New edited soda description"'
-      );
-    });
+      0,
+      'the description changes properly to "New edited soda description"'
+    );
   });
 });
