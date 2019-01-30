@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   model(params, transition) {
-    var brandParams = transition.params['sodaBrands.sodaBrand'];
+    let brandParams = transition.params['sodaBrands.sodaBrand'];
     return this.store.query('soda', {
       orderBy: 'sodaBrand',
       equalTo: brandParams['soda-brand_id']

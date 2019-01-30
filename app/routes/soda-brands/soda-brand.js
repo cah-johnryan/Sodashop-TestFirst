@@ -1,8 +1,9 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import RSVP from 'rsvp';
 
-export default Ember.Route.extend({
+export default Route.extend({
   model(params) {
-    return Ember.RSVP.hash({
+    return RSVP.hash({
       sodaBrand: this.store.find('soda-brand', params['soda-brand_id']),
       selectedSodaBrand: params['soda-brand_id']
     });
